@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useState } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -16,6 +16,7 @@ import ButtonCategory from "./components/buttonCategory";
 import CardTheme from "./components/cardTheme";
 // import Svg, { Ellipse } from "react-native-svg";
 import { Entypo } from "@expo/vector-icons";
+import ContactListModal from "../contactsListcopy";
 const thematic = [
   { color: "#c59ab6", title: "EnhoraBuena" },
   { color: "#c98d6a", title: "Cumpleaños" },
@@ -30,6 +31,7 @@ const categorySearch = [
 ];
 
 const Home = ({ navigation }) => {
+  const [visibleContacts, setVisibleContacts] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -37,7 +39,22 @@ const Home = ({ navigation }) => {
           colors={[COLORS.splashBG1, "white", "white"]}
           style={styles.content}
         >
-          <InputSearch placeholder="¿A quién quieres regalar?" />
+          {/* <TouchableOpacity
+            style={{
+              zIndex: 99,
+              position: "absolute",
+              height: 45,
+              top: 55,
+              width: "100%",
+            }}
+            onPressIn={}
+          ></TouchableOpacity> */}
+          <InputSearch
+            onChangeText={() => {
+              setVisibleContacts(!visibleContacts);
+            }}
+            placeholder="¿A quién quieres regalar?"
+          />
           <Text style={styles.textHeader}>
             Elige una temática para tu regalo:
           </Text>
@@ -104,17 +121,6 @@ const Home = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: "center" }}>
-            {/* <Svg viewBox="0 0 201.66 203.17" style={styles.ellipse}>
-              <Ellipse
-                stroke="rgba(230, 230, 230,1)"
-                strokeWidth={0}
-                fill="rgba(230, 230, 230,1)"
-                cx={101}
-                cy={102}
-                rx={101}
-                ry={102}
-              ></Ellipse>
-            </Svg> */}
             <View style={styles.rect5}>
               <Text style={styles.pasteleriaMaria2}>Pasteleria Maria</Text>
               <Text style={styles.loremIpsum}>
@@ -154,6 +160,7 @@ const Home = ({ navigation }) => {
           </View>
         </View>
       </View>
+      {visibleContacts && <ContactListModal visible={setVisibleContacts} />}
     </View>
   );
 };

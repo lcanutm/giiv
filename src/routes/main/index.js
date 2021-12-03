@@ -2,16 +2,20 @@ import React from "react";
 import { Image, StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import {
   CONTACT_LIST_SCREEN,
+  GIFTS_HISTORICAL_SCREEN,
   GIFTS_SCREEN,
   HOME_SCREEN,
 } from "../../constant/screenNames";
-import Home from "../home";
+import Home from "../../screens/home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { COLORS } from "../../common/colors";
-import Gifts from "../gifts";
-import ContactList from "../contactsList";
+import Gifts from "../../screens/gifts";
+import ContactList from "../../screens/contactsList";
+import { createStackNavigator } from "@react-navigation/stack";
+import GiftsHistorical from "../../screens/giftsHistorical";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const TabButton = ({ label, icon, onPress, accessibilityState }) => {
   let focused = accessibilityState.selected;
@@ -34,7 +38,22 @@ const TabButton = ({ label, icon, onPress, accessibilityState }) => {
   );
 };
 
-const MainNavigation = ({ navigation }) => {
+const StackGifts = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName={GIFTS_SCREEN}
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name={GIFTS_SCREEN} component={Gifts} />
+      <Stack.Screen
+        name={GIFTS_HISTORICAL_SCREEN}
+        component={GiftsHistorical}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const TabNavigation = ({ navigation }) => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -65,8 +84,8 @@ const MainNavigation = ({ navigation }) => {
         }}
       />
       <Tab.Screen
-        name={GIFTS_SCREEN}
-        component={Gifts}
+        name={"Gifts"}
+        component={StackGifts}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ color, focused }) => {
@@ -110,7 +129,7 @@ const MainNavigation = ({ navigation }) => {
     </Tab.Navigator>
   );
 };
-export default MainNavigation;
+export default TabNavigation;
 
 const styles = StyleSheet.create({
   icon: {

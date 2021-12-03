@@ -1,69 +1,76 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useState } from "react";
-import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
+import React from "react";
+import { StyleSheet, View, Text, Modal, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { COLORS } from "../../common/colors";
 import InputSearch from "../../components/inputSearch";
 
-const ContactList = ({ navigation }) => {
+const ContactListModal = ({ navigation, visible }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <LinearGradient
-          colors={[COLORS.splashBG1, "white", "white"]}
-          style={styles.content}
-        >
-          <InputSearch placeholder="¿A quién quieres regalar?" />
-        </LinearGradient>
-      </View>
-      <View style={styles.body}>
-        <View>
-          <Text style={styles.textHeader}>
-            + Regalar a alguien que no esta listado
-          </Text>
-          <View style={styles.scrollArea}>
-            <View
-              horizontal={false}
-              contentContainerStyle={styles.scrollArea_contentContainerStyle}
-            >
-              <View style={styles.rect2}>
-                <Text style={styles.a2}>A</Text>
-              </View>
-              <View style={styles.rect3}>
-                <View style={styles.alvaroGarciaRow}>
-                  <Text style={styles.alvaroGarcia}>Alvaro Garcia</Text>
-                  <Text style={styles.invitar}>Invitar</Text>
+    <Modal visible transparent>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.content}>
+            <InputSearch placeholder="¿A quién quieres regalar?" />
+            <TouchableOpacity onPress={visible}>
+              <MaterialCommunityIcons
+                name="chevron-down"
+                size={30}
+              ></MaterialCommunityIcons>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.body}>
+          <View>
+            <Text style={styles.textHeader}>
+              + Regalar a alguien que no esta listado
+            </Text>
+            <View style={styles.scrollArea}>
+              <View
+                horizontal={false}
+                contentContainerStyle={styles.scrollArea_contentContainerStyle}
+              >
+                <View style={styles.rect2}>
+                  <Text style={styles.a2}>A</Text>
                 </View>
-              </View>
-              <View style={styles.rect4}>
-                <View style={styles.imageRow}>
-                  <Image
-                    source={require("../../assets/image/no-image.png")}
-                    resizeMode="contain"
-                    style={styles.image}
-                  />
-                  <Text style={styles.alvaroGarcia1}>Alvaro Garcia</Text>
-                  <Text style={styles.teBonifico}>Te bonifico</Text>
+                <View style={styles.rect3}>
+                  <View style={styles.alvaroGarciaRow}>
+                    <Text style={styles.alvaroGarcia}>Alvaro Garcia</Text>
+                    <Text style={styles.invitar}>Invitar</Text>
+                  </View>
                 </View>
-              </View>
-              <View style={styles.rect5}>
-                <View style={styles.alvaroGarcia2Row}>
-                  <Text style={styles.alvaroGarcia2}>Alvaro Garcia</Text>
-                  <Text style={styles.invitar2}>Invitar</Text>
+                <View style={styles.rect4}>
+                  <View style={styles.imageRow}>
+                    <Image
+                      source={require("../../assets/image/no-image.png")}
+                      resizeMode="contain"
+                      style={styles.image}
+                    />
+                    <Text style={styles.alvaroGarcia1}>Alvaro Garcia</Text>
+                    <Text style={styles.teBonifico}>Te bonifico</Text>
+                  </View>
+                </View>
+                <View style={styles.rect5}>
+                  <View style={styles.alvaroGarcia2Row}>
+                    <Text style={styles.alvaroGarcia2}>Alvaro Garcia</Text>
+                    <Text style={styles.invitar2}>Invitar</Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
         </View>
       </View>
-    </View>
+    </Modal>
   );
 };
 
-export default ContactList;
+export default ContactListModal;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "rgba(0,0,0,0.5)",
   },
   header: {
     height: 150,
@@ -76,9 +83,16 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 5,
   },
-  content: { height: "100%", paddingTop: 55 },
+  content: {
+    height: "100%",
+    paddingTop: 33,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: 20,
+  },
   body: {
     paddingTop: 10,
+    height: "100%",
     backgroundColor: "white",
     marginTop: -30,
     borderTopLeftRadius: 30,

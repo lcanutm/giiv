@@ -1,13 +1,16 @@
 import React from "react";
-import { StyleSheet, View, TextInput, Image } from "react-native";
+import { StyleSheet, View, TextInput, Image, Text } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { COLORS } from "../common/colors";
 
 const InputSearch = ({ onChangeText, placeholder }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
+      <TouchableOpacity onPress={onChangeText} style={styles.content}>
         <View style={styles.contentInput}>
-          <TextInput
+          <Text style={styles.placeholderText}>{placeholder}</Text>
+          {/* <TextInput
+            editable={false}
             maxLength={25}
             style={styles.placeholderText}
             keyboardType="default"
@@ -15,7 +18,7 @@ const InputSearch = ({ onChangeText, placeholder }) => {
             placeholder={placeholder}
             placeholderTextColor={COLORS.borderDots}
             onChangeText={onChangeText}
-          />
+          /> */}
         </View>
         <View style={styles.contentIcon}>
           <Image
@@ -23,7 +26,7 @@ const InputSearch = ({ onChangeText, placeholder }) => {
             source={require("../assets/iconos/lupa.png")}
           />
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -32,17 +35,11 @@ export default InputSearch;
 
 const styles = StyleSheet.create({
   container: {
+    zIndex: -99,
     justifyContent: "center",
     height: 40,
     width: "90%",
     alignSelf: "center",
-    shadowColor: "black",
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
   },
   content: {
     justifyContent: "center",
@@ -53,6 +50,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     flexDirection: "row",
     backgroundColor: "white",
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    shadowRadius: 8,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
   },
   contentInput: {
     justifyContent: "center",

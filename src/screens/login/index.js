@@ -72,7 +72,7 @@ const Login = ({ navigation }) => {
             <ButtonAuth
               title="Acceder"
               onPress={() => {
-                navigation.navigate(HOME_SCREEN);
+                navigation.navigate("Home");
               }}
             />
             <View style={styles.separedor}>

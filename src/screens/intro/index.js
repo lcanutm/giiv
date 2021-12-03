@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { dimensions } from "../../common/styles";
 import { COLORS, mainColor, textColor } from "../../common/colors";
-import { INTRO_SCREEN } from "../../constant/screenNames";
+import { INTRO_SCREEN, LOGIN_SCREEN } from "../../constant/screenNames";
 import BodyIntro from "./components/bodyIntro";
 import HeaderIntro from "./components/headerIntro";
 const { width } = dimensions;
@@ -119,7 +119,7 @@ const Intro = (props) => {
                 borderRadius: 20,
               }}
               onPress={() => {
-                props.navigation.replace("Home");
+                props.navigation.replace(LOGIN_SCREEN);
               }}
             >
               <Text

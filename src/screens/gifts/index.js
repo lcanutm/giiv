@@ -1,76 +1,69 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  ImageBackground,
-  Image,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { COLORS } from "../../common/colors";
-import { dimensions } from "../../common/styles";
-import ButtonAuth from "../../components/buttonAuth";
-import ButtonAuthSocial from "../../components/buttonAuthSocial";
-import InputAuth from "../../components/inputAuth";
-import { LOGIN_SCREEN, REGISTER_SCREEN } from "../../constant/screenNames";
-import HeaderIntro from "../intro/components/headerIntro";
+import {
+  GIFTS_HISTORICAL_SCREEN,
+  LOGIN_SCREEN,
+  REGISTER_SCREEN,
+} from "../../constant/screenNames";
 
 const Gifts = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={[COLORS.splashBG1, "rgba(110,223,145,.6)"]}
-        style={styles.content}
-      >
-        <View style={styles.body}>
-          <Text
-            style={{
-              fontSize: 32,
-              fontFamily: "GothamRoundedMedium_21022",
-              color: "white",
-              textAlign: "center",
-            }}
-          >
-            Recuperar clave
-          </Text>
-          <View style={styles.contentInputs}>
-            <InputAuth placeholder="Email" />
+      <View style={styles.header}>
+        <LinearGradient
+          colors={[COLORS.splashBG1, "white", "white"]}
+          style={styles.content}
+        >
+          <View style={styles.contentHeader}>
+            <Text style={styles.textHeader}>Mis Regalos</Text>
+            <Image
+              source={require("../../assets/image/no-image.png")}
+              resizeMode="contain"
+              style={styles.image}
+            />
           </View>
-          <ButtonAuth title="Recibir clave" />
-        </View>
+        </LinearGradient>
+      </View>
+      <View style={styles.body}>
         <TouchableOpacity
-          style={{
-            height: 40,
-            justifyContent: "center",
-            alignItems: "center",
-            marginBottom: 20,
-          }}
           onPress={() => {
-            navigation.navigate(REGISTER_SCREEN);
+            navigation.navigate(GIFTS_HISTORICAL_SCREEN);
           }}
         >
-          <Text
-            style={{
-              fontSize: 16,
-              fontFamily: "GothamRoundedBook_21018",
-              color: "white",
-            }}
-          >
-            ¿No tienes cuenta?
-            <Text
-              style={{
-                fontSize: 16,
-                fontFamily: "GothamRoundedBold_21016",
-                color: "white",
-                textDecorationLine: "underline",
+          <Image
+            source={require("../../assets/image/no-image.png")}
+            resizeMode="contain"
+            style={styles.imageBody}
+          />
+        </TouchableOpacity>
+        <Text style={styles.textBody1}>Ups! No haz iniciado sesion</Text>
+        <View style={styles.description}>
+          <Text style={styles.textBody2}>
+            Para acceder a tus regalos recuerda que debes{" "}
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Start", {
+                  screen: LOGIN_SCREEN,
+                });
               }}
             >
-              {" Regístrate"}
-            </Text>
+              <Text style={styles.iniciar}>iniciar sesion </Text>
+            </TouchableOpacity>
+            o{" "}
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Start", {
+                  screen: REGISTER_SCREEN,
+                });
+              }}
+            >
+              <Text style={styles.iniciar}>crear una cuenta</Text>
+            </TouchableOpacity>
           </Text>
-        </TouchableOpacity>
-      </LinearGradient>
+        </View>
+      </View>
     </View>
   );
 };
@@ -79,25 +72,59 @@ export default Gifts;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
   },
-  content: {
-    flex: 1,
+  header: {
+    height: 88,
   },
-  body: {
-    flex: 1,
-    justifyContent: "center",
-    // alignItems: "center",
-    paddingHorizontal: 30,
+  textHeader: {
+    fontSize: 22,
+    fontFamily: "GothamRoundedBook_21018",
+    color: COLORS.tealBlue,
+    textAlign: "center",
+    paddingTop: 15,
+    paddingBottom: 5,
   },
-  contentInputs: {
-    marginTop: 20,
+  textBody1: {
+    fontSize: 24,
+    fontFamily: "GothamRoundedBook_21018",
+    color: COLORS.tealBlue,
+    textAlign: "center",
+    paddingTop: 15,
+    paddingBottom: 5,
   },
-  separedor: {
-    height: 40,
+  textBody2: {
+    fontSize: 17,
+    fontFamily: "GothamRoundedBook_21018",
+    color: COLORS.gunmetal,
+    textAlign: "center",
+    marginHorizontal: 15,
+    lineHeight: 22,
+  },
+  iniciar: {
+    fontSize: 17,
+    fontFamily: "GothamRoundedBook_21018",
+    color: COLORS.kelleyGreen,
+  },
+  description: {
+    flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
   },
-  contentButtonSocial: {
+  content: { height: "100%", paddingTop: 33 },
+  body: {
+    paddingTop: 10,
+    flex: 1,
     justifyContent: "center",
+    alignItems: "center",
+  },
+  image: { width: 30, height: 30, position: "absolute", right: 15 },
+  imageBody: { width: 150, height: 150 },
+  contentHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 55,
   },
 });

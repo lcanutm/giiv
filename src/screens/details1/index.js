@@ -138,12 +138,6 @@ const styles = StyleSheet.create({
   },
   imageHeader: { width: 30, height: 30, position: "absolute", right: 15 },
   imageBody: { width: "90%", marginTop: 10, alignSelf: "center" },
-  contentHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    height: 55,
-  },
   rect5: { alignItems: "center", paddingTop: 25 },
   pasteleriaMaria2: {
     fontFamily: "GothamRoundedBook_21018",

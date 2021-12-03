@@ -17,6 +17,7 @@ import CardTheme from "./components/cardTheme";
 // import Svg, { Ellipse } from "react-native-svg";
 import { Entypo } from "@expo/vector-icons";
 import ContactListModal from "../contactsListcopy";
+import PriceRange from "../priceRange";
 const thematic = [
   { color: "#c59ab6", title: "EnhoraBuena" },
   { color: "#c98d6a", title: "Cumpleaños" },
@@ -32,6 +33,7 @@ const categorySearch = [
 
 const Home = ({ navigation }) => {
   const [visibleContacts, setVisibleContacts] = useState(false);
+  const [visiblePrice, setVisiblePrice] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -102,7 +104,10 @@ const Home = ({ navigation }) => {
             }}
           >
             <InputSearch placeholder="¿Buscas algo concreto?" />
-            <TouchableOpacity style={{ alignItems: "center" }}>
+            <TouchableOpacity
+              onPress={() => setVisiblePrice(true)}
+              style={{ alignItems: "center" }}
+            >
               <Text
                 style={{
                   fontSize: 14,
@@ -161,6 +166,7 @@ const Home = ({ navigation }) => {
         </View>
       </View>
       {visibleContacts && <ContactListModal visible={setVisibleContacts} />}
+      {visiblePrice && <PriceRange visible={setVisiblePrice} />}
     </View>
   );
 };

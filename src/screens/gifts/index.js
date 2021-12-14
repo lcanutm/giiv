@@ -12,10 +12,7 @@ const Gifts = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <LinearGradient
-          colors={[COLORS.splashBG1, "white", "white"]}
-          style={styles.content}
-        >
+        <View style={styles.content}>
           <View style={styles.contentHeader}>
             <Text style={styles.textHeader}>Mis Regalos</Text>
             <Image
@@ -24,7 +21,7 @@ const Gifts = ({ navigation }) => {
               style={styles.image}
             />
           </View>
-        </LinearGradient>
+        </View>
       </View>
       <View style={styles.body}>
         <TouchableOpacity
@@ -41,7 +38,7 @@ const Gifts = ({ navigation }) => {
         <Text style={styles.textBody1}>Ups! No haz iniciado sesion</Text>
         <View style={styles.description}>
           <Text style={styles.textBody2}>
-            Para acceder a tus regalos recuerda que debes{" "}
+            Para acceder a tus regalos recuerda que debes
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate("Start", {
@@ -49,9 +46,9 @@ const Gifts = ({ navigation }) => {
                 });
               }}
             >
-              <Text style={styles.iniciar}>iniciar sesion </Text>
+              <Text style={styles.iniciar}>{" iniciar sesion"}</Text>
             </TouchableOpacity>
-            o{" "}
+            {" o "}
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate("Start", {
@@ -75,49 +72,46 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   header: {
-    height: 88,
+    height: 156,
   },
   textHeader: {
     fontSize: 22,
-    fontFamily: "GothamRoundedBook_21018",
-    color: COLORS.tealBlue,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.azul,
     textAlign: "center",
-    paddingTop: 15,
-    paddingBottom: 5,
   },
   textBody1: {
-    fontSize: 24,
-    fontFamily: "GothamRoundedBook_21018",
-    color: COLORS.tealBlue,
+    fontSize: 22,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.azul,
     textAlign: "center",
-    paddingTop: 15,
-    paddingBottom: 5,
   },
   textBody2: {
-    fontSize: 17,
-    fontFamily: "GothamRoundedBook_21018",
-    color: COLORS.gunmetal,
+    fontSize: 16,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.gris,
     textAlign: "center",
-    marginHorizontal: 15,
+    marginHorizontal: 22,
     lineHeight: 22,
   },
   iniciar: {
-    fontSize: 17,
-    fontFamily: "GothamRoundedBook_21018",
-    color: COLORS.kelleyGreen,
+    fontSize: 16,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.turquesa,
+    textDecorationLine: "underline",
+    paddingTop: 8,
   },
   description: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: 10,
   },
-  content: { height: "100%", paddingTop: 33 },
+  content: { height: "100%", paddingTop: 44 },
   body: {
-    paddingTop: 10,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingBottom: 156,
   },
   image: { width: 30, height: 30, position: "absolute", right: 15 },
   imageBody: { width: 150, height: 150 },
@@ -125,6 +119,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    height: 55,
+    height: 44,
   },
 });

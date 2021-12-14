@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: COLORS.gunmetal,
     letterSpacing: 0.4,
   },

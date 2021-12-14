@@ -3,26 +3,42 @@ import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
   FlatList,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  ImageBackground,
 } from "react-native";
 import { COLORS } from "../../common/colors";
 import { dimensions } from "../../common/styles";
 import InputSearch from "../../components/inputSearch";
 import ButtonCategory from "./components/buttonCategory";
 import CardTheme from "./components/cardTheme";
-// import Svg, { Ellipse } from "react-native-svg";
-import { Entypo } from "@expo/vector-icons";
 import ContactListModal from "../contactsListcopy";
 import PriceRange from "../priceRange";
+import CardProduct from "../../components/cardProduct";
+import DatailsProducts3 from "../details1 copy 3";
 const thematic = [
-  { color: "#c59ab6", title: "EnhoraBuena" },
-  { color: "#c98d6a", title: "Cumpleaños" },
-  { color: "#72cfad", title: "Gracias" },
-  { color: "#c59ab6", title: "Graduación" },
+  {
+    color: "rgb(217,181,203)",
+    title: "Enhorabuena",
+    icono: require("../../assets/iconos/etiquetaIconosEnhorabuena.png"),
+  },
+  {
+    color: "rgb(254,208,213)",
+    title: "Cumpleaños",
+    icono: require("../../assets/iconos/etiquetaIconosCumple.png"),
+  },
+  {
+    color: "rgb(186,237,239)",
+    title: "Gracias",
+    icono: require("../../assets/iconos/etiquetaIconosGracias.png"),
+  },
+  {
+    color: "rgb(217,181,203)",
+    title: "Graduación",
+    icono: require("../../assets/iconos/etiquetaIconosGraduacion.png"),
+  },
 ];
 const categorySearch = [
   { title: "Nuevo" },
@@ -31,32 +47,51 @@ const categorySearch = [
   { title: "Infantil" },
 ];
 
+const products = [
+  {
+    image: require("../../assets/image/no-image.png"),
+    name: "Pastelería María",
+    description:
+      "Descubre nuestras tartas artesanales frescas, con ingredientes de la mejor calidad. Tartas 0% Azúcar. Tartas Sin Lactosa. ",
+    precio: 22,
+  },
+  {
+    image: require("../../assets/image/no-image.png"),
+    name: "Pastelería Tartevere",
+    description:
+      "En Blasé no concebimos que un producto no sea de calidad, por eso trabajamos mano a mano con nuestros artesanos",
+    precio: 65,
+  },
+  {
+    image: require("../../assets/image/no-image.png"),
+    name: "Blase",
+    description:
+      "Tienda gourmet con productos delicatessen de España, cajas y cestas de regalo personalizadas, vinos de gran formato y edición limitada.",
+    precio: 18,
+  },
+];
+
 const Home = ({ navigation }) => {
   const [visibleContacts, setVisibleContacts] = useState(false);
   const [visiblePrice, setVisiblePrice] = useState(false);
+  const [visibleDetailsProducts, setVisibleDetailsProducts] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState({});
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <LinearGradient
-          colors={[COLORS.splashBG1, "white", "white"]}
+          colors={["rgba(65 ,143, 222,0.2)", "white"]}
           style={styles.content}
         >
-          {/* <TouchableOpacity
-            style={{
-              zIndex: 99,
-              position: "absolute",
-              height: 45,
-              top: 55,
-              width: "100%",
-            }}
-            onPressIn={}
-          ></TouchableOpacity> */}
-          <InputSearch
-            onChangeText={() => {
-              setVisibleContacts(!visibleContacts);
-            }}
-            placeholder="¿A quién quieres regalar?"
-          />
+          <View style={styles.contentInput}>
+            <InputSearch
+              onChangeText={() => {
+                setVisibleContacts(!visibleContacts);
+              }}
+              placeholder="¿A quién quieres regalar?"
+            />
+          </View>
+
           <Text style={styles.textHeader}>
             Elige una temática para tu regalo:
           </Text>
@@ -69,104 +104,123 @@ const Home = ({ navigation }) => {
               return item.title;
             }}
             renderItem={({ item }) => {
-              return <CardTheme title={item.title} color={item.color} />;
+              return (
+                <CardTheme
+                  title={item.title}
+                  color={item.color}
+                  icono={item.icono}
+                />
+              );
             }}
           />
         </LinearGradient>
       </View>
       <View style={styles.body}>
-        <View>
+        <View style={{ marginBottom: -24 }}>
           <Text style={styles.textHeader}>¿Qué te gustaría regalar?</Text>
-          <FlatList
-            contentContainerStyle={{
-              marginLeft: dimensions.width * 0.05,
-              alignItems: "center",
-              marginBottom: 20,
-            }}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={categorySearch}
-            keyExtractor={(item) => {
-              return item.title;
-            }}
-            ItemSeparatorComponent={() => {
-              return <View style={{ width: 10 }}></View>;
-            }}
-            renderItem={({ item }) => {
-              return <ButtonCategory title={item.title} />;
-            }}
-          />
-          <View
+        </View>
+        <FlatList
+          contentContainerStyle={styles.etiquetas}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={categorySearch}
+          keyExtractor={(item) => {
+            return item.title;
+          }}
+          ItemSeparatorComponent={() => {
+            return <View style={{ width: 10 }}></View>;
+          }}
+          renderItem={({ item }) => {
+            return <ButtonCategory title={item.title} />;
+          }}
+        />
+        <View
+          style={{
+            flexDirection: "row",
+            marginHorizontal: 12,
+            justifyContent: "flex-end",
+            marginBottom: 16,
+          }}
+        >
+          <View style={{ width: "85%" }}>
+            <InputSearch placeholder="¿Buscas algo concreto?" />
+          </View>
+          <TouchableOpacity
+            onPress={() => setVisiblePrice(true)}
             style={{
-              flexDirection: "row",
-              marginHorizontal: dimensions.width * 0.05,
-              height: 55,
+              flex: 1,
+              height: 44,
+              alignItems: "flex-end",
+              justifyContent: "center",
             }}
           >
-            <InputSearch placeholder="¿Buscas algo concreto?" />
-            <TouchableOpacity
-              onPress={() => setVisiblePrice(true)}
-              style={{ alignItems: "center" }}
-            >
+            <View style={{ alignItems: "center" }}>
               <Text
                 style={{
                   fontSize: 14,
-                  fontFamily: "GothamRoundedBook_21018",
-                  color: COLORS.borderDots,
+                  fontFamily: "Rounded1cRegular",
+                  color: COLORS.gris,
                   textAlign: "center",
+                  marginBottom: -8,
                 }}
               >
                 Precio
               </Text>
               <MaterialCommunityIcons
-                color={COLORS.borderDots}
+                color={COLORS.turquesa}
                 size={30}
                 name="chevron-down"
               />
-            </TouchableOpacity>
-          </View>
-          <View style={{ flex: 1, alignItems: "center" }}>
-            <View style={styles.rect5}>
-              <Text style={styles.pasteleriaMaria2}>Pasteleria Maria</Text>
-              <Text style={styles.loremIpsum}>
-                Deliciosas tartas de chocolate blaco, hechas a{"\n"}mano...
-              </Text>
-              <View style={styles.buttonRow}>
-                <TouchableOpacity style={styles.button}>
-                  <View style={styles.loremIpsum2Row}>
-                    <Text style={styles.loremIpsum2}>
-                      Ver catalogo completo
-                    </Text>
-                    <Entypo
-                      name="chevron-thin-right"
-                      style={styles.icon2}
-                    ></Entypo>
-                  </View>
-                </TouchableOpacity>
-                <View style={styles.rect7}>
-                  <Text style={styles.text}>22€</Text>
-                </View>
-              </View>
             </View>
-            <ImageBackground
-              source={require("../../assets/image/no-image.png")}
-              resizeMode="contain"
-              style={styles.image}
-              imageStyle={styles.image_imageStyle}
-            >
-              <TouchableOpacity style={styles.button2}>
-                <View style={styles.group}>
-                  <View style={styles.rect6}>
-                    <Text style={styles.patrocinado}>Patrocinado</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            </ImageBackground>
-          </View>
+          </TouchableOpacity>
         </View>
+        <FlatList
+          contentContainerStyle={{ marginHorizontal: 12 }}
+          data={products}
+          keyExtractor={(item) => {
+            return item.name;
+          }}
+          // ItemSeparatorComponent={() => {
+          //   return <View style={{ width: 10 }}></View>;
+          // }}
+          renderItem={({ item }) => {
+            return (
+              <CardProduct
+                name={item.name}
+                description={item.description}
+                image={item.image}
+                precio={item.precio}
+                onPress={() => {
+                  setCurrentProduct(item);
+                  setVisibleDetailsProducts(true);
+                }}
+              />
+            );
+          }}
+        />
+
+        {/* {products.map((item) => {
+          return (
+            <CardProduct
+              name={item.name}
+              description={item.description}
+              image={item.image}
+              precio={item.precio}
+            />
+          );
+        })} */}
       </View>
+
       {visibleContacts && <ContactListModal visible={setVisibleContacts} />}
       {visiblePrice && <PriceRange visible={setVisiblePrice} />}
+      {visibleDetailsProducts && (
+        <DatailsProducts3
+          name={currentProduct.name}
+          description={currentProduct.description}
+          image={currentProduct.image}
+          visible={setVisibleDetailsProducts}
+        />
+      )}
     </View>
   );
 };
@@ -178,23 +232,24 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   header: {
-    height: 300,
+    height: 268,
   },
   textHeader: {
-    fontSize: 14,
-    fontFamily: "GothamRoundedBook_21018",
-    color: COLORS.tealBlue,
+    fontSize: 16,
+    fontFamily: "Rounded1cRegular",
+    color: COLORS.azul,
     textAlign: "center",
-    paddingTop: 15,
-    paddingBottom: 5,
+    height: 28,
+    marginTop: 16,
+    marginBottom: 4,
   },
   content: { height: "100%", paddingTop: 55 },
   body: {
     paddingTop: 10,
-    backgroundColor: "white",
-    marginTop: -30,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    backgroundColor: COLORS.white,
+    marginTop: -16,
+    borderTopLeftRadius: 28.5,
+    borderTopRightRadius: 28.5,
     shadowColor: COLORS.tealBlue,
     shadowOpacity: 0.15,
     shadowRadius: 15,
@@ -218,7 +273,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   pasteleriaMaria2: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     height: 20,
     width: 135,
@@ -227,7 +282,7 @@ const styles = StyleSheet.create({
     marginLeft: 30,
   },
   loremIpsum: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     fontSize: 14,
     marginTop: 14,
@@ -239,7 +294,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   loremIpsum2: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(29,158,112,1)",
     marginTop: 3,
   },
@@ -261,7 +316,7 @@ const styles = StyleSheet.create({
     marginLeft: 99,
   },
   text: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(255,255,255,1)",
     marginTop: 2,
     marginLeft: 10,
@@ -299,7 +354,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,1)",
   },
   patrocinado: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(43,135,204,1)",
     height: 17,
     width: 111,
@@ -308,5 +363,14 @@ const styles = StyleSheet.create({
   },
   ellipseStack: {
     flex: 1,
+  },
+  contentInput: {
+    marginHorizontal: 12,
+  },
+  etiquetas: {
+    marginLeft: 12,
+    alignItems: "center",
+    height: 100,
+    marginBottom: -8,
   },
 });

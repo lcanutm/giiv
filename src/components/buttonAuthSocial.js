@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { COLORS } from "../common/colors";
 
 const ButtonAuthSocial = ({ title, onPress }) => {
   return (
@@ -30,23 +31,23 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   button: {
-    height: 40,
+    height: 44,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
-    borderRadius: 20,
+    backgroundColor: COLORS.white,
+    borderRadius: 22,
     paddingHorizontal: 50,
-    marginBottom: 10,
+    marginBottom: 8,
   },
   text: {
     fontSize: 16,
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cMedium",
+    color: "rgb(100,102,102)",
   },
   image: {
     width: 25,
     height: 25,
     resizeMode: "contain",
-    marginRight: 20,
-    // tintColor: COLORS.tealBlue,
+    marginRight: 17,
   },
 });

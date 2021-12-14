@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { COLORS } from "../common/colors";
 
 const ButtonAuth = ({ title, onPress }) => {
   return (
@@ -20,17 +21,18 @@ export default ButtonAuth;
 const styles = StyleSheet.create({
   content: { alignItems: "center" },
   button: {
-    height: 40,
+    height: 44,
+    paddingHorizontal: 28,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
-    borderRadius: 20,
-    paddingHorizontal: 25,
+    backgroundColor: COLORS.white,
+    borderRadius: 22,
   },
   text: {
     fontSize: 16,
-    fontFamily: "GothamRoundedMedium_21022",
-    color: "green",
+    fontFamily: "Rounded1cExtraBold",
+    color: COLORS.turquesa,
     textAlign: "center",
+    letterSpacing: 1,
   },
 });

@@ -1,6 +1,7 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
-import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
 import { COLORS } from "../../common/colors";
 import InputSearch from "../../components/inputSearch";
 
@@ -9,17 +10,80 @@ const ContactList = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <LinearGradient
-          colors={[COLORS.splashBG1, "white", "white"]}
           style={styles.content}
+          colors={["rgba(65 ,143, 222,0.2)", "white"]}
         >
-          <InputSearch placeholder="¿A quién quieres regalar?" />
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "flex-end",
+              marginTop: 55,
+              marginBottom: 14,
+            }}
+          >
+            <View style={{ width: "92%" }}>
+              <InputSearch placeholder="¿Buscas algo concreto?" />
+            </View>
+            <TouchableOpacity
+              onPress={() => visible(false)}
+              style={{
+                flex: 1,
+                height: 44,
+                alignItems: "flex-end",
+                justifyContent: "center",
+              }}
+            >
+              <View style={{ alignItems: "center" }}>
+                <MaterialCommunityIcons
+                  color={COLORS.white}
+                  size={30}
+                  name="chevron-down"
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
         </LinearGradient>
       </View>
       <View style={styles.body}>
         <View>
-          <Text style={styles.textHeader}>
-            + Regalar a alguien que no esta listado
-          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{
+                width: 60,
+                alignItems: "flex-end",
+              }}
+            >
+              <View
+                style={{
+                  height: 18,
+                  width: 18,
+                  borderRadius: 9,
+                  backgroundColor: COLORS.turquesa,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    color: COLORS.white,
+                    fontFamily: "Rounded1cExtraBold",
+                  }}
+                >
+                  +
+                </Text>
+              </View>
+            </View>
+            <Text style={styles.textHeader}>
+              Regalar a alguien que no está listado
+            </Text>
+            <View style={{ width: 60 }} />
+          </View>
           <View style={styles.scrollArea}>
             <View
               horizontal={false}
@@ -29,26 +93,42 @@ const ContactList = ({ navigation }) => {
                 <Text style={styles.a2}>A</Text>
               </View>
               <View style={styles.rect3}>
-                <View style={styles.alvaroGarciaRow}>
-                  <Text style={styles.alvaroGarcia}>Alvaro Garcia</Text>
-                  <Text style={styles.invitar}>Invitar</Text>
-                </View>
+                <Text style={styles.alvaroGarcia}>Alvaro Garcia</Text>
               </View>
-              <View style={styles.rect4}>
+              <View style={styles.rect3}>
                 <View style={styles.imageRow}>
+                  {/* <Image
+                      source={require("../../assets/image/no-image.png")}
+                      resizeMode="contain"
+                      style={styles.image}
+                    /> */}
+                  <Text style={styles.alvaroGarcia}>Ana Herrero</Text>
                   <Image
-                    source={require("../../assets/image/no-image.png")}
+                    source={require("../../assets/iconos/tabBarEnlaceIconoCopy.png")}
                     resizeMode="contain"
-                    style={styles.image}
+                    style={{ width: 18, height: 18 }}
                   />
-                  <Text style={styles.alvaroGarcia1}>Alvaro Garcia</Text>
-                  <Text style={styles.teBonifico}>Te bonifico</Text>
                 </View>
               </View>
-              <View style={styles.rect5}>
-                <View style={styles.alvaroGarcia2Row}>
-                  <Text style={styles.alvaroGarcia2}>Alvaro Garcia</Text>
-                  <Text style={styles.invitar2}>Invitar</Text>
+              <View style={styles.rect2}>
+                <Text style={styles.a2}>C</Text>
+              </View>
+              <View style={styles.rect3}>
+                <Text style={styles.alvaroGarcia}>Carlos Rodiguez</Text>
+              </View>
+              <View style={styles.rect3}>
+                <View style={styles.imageRow}>
+                  {/* <Image
+                      source={require("../../assets/image/no-image.png")}
+                      resizeMode="contain"
+                      style={styles.image}
+                    /> */}
+                  <Text style={styles.alvaroGarcia}>Carmen Martinez</Text>
+                  <Image
+                    source={require("../../assets/iconos/tabBarEnlaceIconoCopy.png")}
+                    resizeMode="contain"
+                    style={{ width: 18, height: 18 }}
+                  />
                 </View>
               </View>
             </View>
@@ -63,24 +143,28 @@ export default ContactList;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: COLORS.white,
   },
   header: {
-    height: 150,
+    height: 130,
   },
   textHeader: {
-    fontSize: 14,
-    fontFamily: "GothamRoundedBook_21018",
-    color: COLORS.tealBlue,
+    flex: 1,
+    fontSize: 16,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.turquesa,
     textAlign: "center",
-    paddingTop: 15,
-    paddingBottom: 5,
   },
-  content: { height: "100%", paddingTop: 55 },
+  content: {
+    height: "100%",
+    width: "100%",
+    paddingHorizontal: 12,
+  },
   body: {
     paddingTop: 10,
+    height: "100%",
     backgroundColor: "white",
-    marginTop: -30,
+    marginTop: -16,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     shadowColor: COLORS.tealBlue,
@@ -93,61 +177,42 @@ const styles = StyleSheet.create({
   },
   scrollArea: {
     width: "100%",
-    backgroundColor: "#E6E6E6",
-    marginTop: 65,
+    marginTop: 16,
   },
   scrollArea_contentContainerStyle: {
-    height: 701,
     width: "100%",
   },
   rect2: {
     width: "100%",
     height: 45,
-    backgroundColor: "rgba(74,144,226,1)",
+    backgroundColor: "rgba( 65, 143, 222,0.30)",
+    justifyContent: "center",
+    paddingLeft: 22,
   },
   a2: {
-    fontFamily: "GothamRoundedBook_21018",
-    color: "#121212",
-    fontSize: 18,
-    marginTop: 12,
-    marginLeft: 25,
+    fontFamily: "Rounded1cExtraBold",
+    color: COLORS.white,
+    fontSize: 16,
   },
   rect3: {
     width: "100%",
-    height: 45,
-    backgroundColor: "rgba(255,255,255,1)",
-    borderWidth: 1,
-    borderColor: "rgba(155,155,155,1)",
+    height: 48,
+    borderColor: "rgba(65, 143, 222, 0.15)",
     borderBottomWidth: 1,
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: {
-      width: 3,
-      height: 3,
-    },
-    elevation: 5,
-    shadowOpacity: 1,
-    shadowRadius: 0,
     flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 22,
   },
   alvaroGarcia: {
-    fontFamily: "GothamRoundedBook_21018",
-    color: "rgba(133,133,133,1)",
-  },
-  invitar: {
-    fontFamily: "GothamRoundedBook_21018",
-    color: "rgba(92,144,32,1)",
-    fontSize: 12,
-    textDecorationLine: "underline",
-    marginLeft: 217,
-    marginTop: 2,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.gris,
+    fontSize: 16,
+    flex: 1,
   },
   alvaroGarciaRow: {
     height: 16,
     flexDirection: "row",
     flex: 1,
-    marginRight: 15,
-    marginLeft: 25,
-    marginTop: 15,
   },
   rect4: {
     width: "100%",
@@ -163,13 +228,13 @@ const styles = StyleSheet.create({
     height: 27,
   },
   alvaroGarcia1: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(133,133,133,1)",
     marginLeft: 4,
     marginTop: 6,
   },
   teBonifico: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(74,144,226,1)",
     fontSize: 12,
     marginLeft: 162,
@@ -179,9 +244,7 @@ const styles = StyleSheet.create({
     height: 27,
     flexDirection: "row",
     flex: 1,
-    marginRight: 16,
-    marginLeft: 21,
-    marginTop: 9,
+    alignItems: "center",
   },
   rect5: {
     width: "100%",
@@ -193,11 +256,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   alvaroGarcia2: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(133,133,133,1)",
   },
   invitar2: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(92,144,32,1)",
     fontSize: 12,
     textDecorationLine: "underline",

@@ -1,68 +1,89 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Modal,
-} from "react-native";
+import { StyleSheet, View, Text, Modal, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { COLORS } from "../../common/colors";
+import InputSearch from "../../components/inputSearch";
 
 const PriceRange = ({ navigation, visible }) => {
   return (
     <Modal visible transparent>
       <View style={styles.container}>
         <View style={styles.header}>
-          <View style={styles.content}>
-            <View style={styles.contentHeader}>
+          <View
+            style={{
+              width: "100%",
+              justifyContent: "flex-end",
+              marginTop: 55,
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                height: 44,
+                width: "100%",
+                alignItems: "center",
+              }}
+            >
               <TouchableOpacity
-                onPress={() => {
-                  visible(false);
-                }}
-                style={styles.buttonLeft}
-              >
-                <MaterialCommunityIcons
-                  name="chevron-left"
-                  size={30}
-                  color="white"
-                />
-              </TouchableOpacity>
-              <View
+                onPress={() => visible(false)}
                 style={{
-                  flexDirection: "row",
-                  alignItems: "center",
+                  width: 40,
+                  height: "100%",
+                  alignItems: "flex-start",
                   justifyContent: "center",
-                  flex: 1,
                 }}
               >
-                <Text style={styles.textHeader}>Tu pones el precio</Text>
-              </View>
-              <View style={{ width: 30 }}></View>
+                <View style={{ alignItems: "center" }}>
+                  <MaterialCommunityIcons
+                    color={COLORS.white}
+                    size={30}
+                    name="chevron-left"
+                  />
+                </View>
+              </TouchableOpacity>
+
+              {/* <Image
+                  source={require("../../assets/image/no-image.png")}
+                  resizeMode="contain"
+                  style={styles.image}
+                /> */}
+              <Text style={styles.textHeader}>Tu pones el precio</Text>
             </View>
           </View>
         </View>
         <View style={styles.body}>
-          <View style={styles.group}>
-            <Text style={styles.loremIpsum}>
-              Indica el rango que te insteresa
-            </Text>
-            <View style={styles.rectRow}>
-              <View style={styles.rect}>
-                <Text style={styles.desde}>Desde</Text>
-              </View>
-              <View style={styles.rect1}>
-                <Text style={styles.hasta}>Hasta</Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.group2}>
+          <Text style={styles.text}>Indica el rango que te interesa:</Text>
+          <View style={{ flexDirection: "row" }}>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.aplicar}>Aplicar</Text>
+              <Text
+                style={{
+                  fontFamily: "Rounded1cMedium",
+                  fontSize: 14,
+                  color: COLORS.gris,
+                }}
+              >
+                Desde
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+              <Text
+                style={{
+                  fontFamily: "Rounded1cMedium",
+                  fontSize: 14,
+                  color: COLORS.gris,
+                }}
+              >
+                Hasta
+              </Text>
             </TouchableOpacity>
           </View>
+        </View>
+        <View style={styles.contentGift}>
+          <TouchableOpacity style={styles.gift}>
+            <Text style={styles.textButton}>Aplicar</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>
@@ -76,120 +97,69 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.8)",
   },
   header: {
-    height: 88,
+    height: 130,
   },
   textHeader: {
-    fontSize: 22,
-    fontFamily: "GothamRoundedBook_21018",
-    color: "white",
-    textAlign: "center",
-    paddingTop: 15,
-    paddingBottom: 5,
-  },
-  textBody1: {
-    fontSize: 24,
-    fontFamily: "GothamRoundedBook_21018",
-    color: COLORS.tealBlue,
-    textAlign: "center",
-    paddingTop: 15,
-    paddingBottom: 5,
-  },
-  textBody2: {
-    fontSize: 17,
-    fontFamily: "GothamRoundedBook_21018",
-    color: COLORS.gunmetal,
-    textAlign: "center",
-    marginHorizontal: 15,
-    lineHeight: 22,
-  },
-  iniciar: {
-    fontSize: 17,
-    fontFamily: "GothamRoundedBook_21018",
-    color: COLORS.kelleyGreen,
-  },
-  description: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  content: { height: "100%", paddingTop: 33 },
-  body: {
-    paddingTop: 10,
     flex: 1,
+    fontSize: 22,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.white,
+    textAlign: "center",
+    marginRight: 40,
+  },
+  content: {
+    height: "100%",
+    width: "100%",
+    paddingHorizontal: 12,
+  },
+  image: {
+    height: 34,
+    width: 34,
+    borderRadius: 17,
+  },
+  backBotton: {},
+  body: {
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
+    paddingBottom: 130,
   },
-  image: { width: 30, height: 30, position: "absolute", right: 15 },
-  imageBody: { width: 150, height: 150 },
-  contentHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    height: 55,
-    paddingHorizontal: 15,
+  text: {
+    fontSize: 14,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.white,
   },
-  group: {
+  contentGift: {
     width: "100%",
-    height: 77,
-    marginTop: 367,
-    alignItems: "center",
+    height: 44,
+    position: "absolute",
+    bottom: 34,
+    paddingHorizontal: 24,
   },
-  loremIpsum: {
-    fontFamily: "GothamRoundedBook_21018",
-    color: "white",
-  },
-  rect: {
-    width: 126,
-    height: 59,
-    backgroundColor: "#E6E6E6",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 8,
-  },
-  desde: {
-    fontFamily: "GothamRoundedBook_21018",
-    color: "#121212",
-    marginTop: 21,
-    marginLeft: 43,
-  },
-  rect1: {
-    width: 126,
-    height: 59,
-    backgroundColor: "#E6E6E6",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 8,
-    marginLeft: 8,
-  },
-  hasta: {
-    fontFamily: "GothamRoundedBook_21018",
-    color: "#121212",
-    marginTop: 21,
-    marginLeft: 44,
-  },
-  rectRow: {
-    height: 59,
-    flexDirection: "row",
-    marginTop: 2,
-  },
-  group2: {
+  gift: {
+    backgroundColor: COLORS.turquesa,
     width: "100%",
-    height: 42,
-    marginTop: 274,
+    height: 44,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 22,
+    borderColor: COLORS.white,
+    borderWidth: 1,
+  },
+  textButton: {
+    fontSize: 16,
+    letterSpacing: 1,
+    fontFamily: "Rounded1cExtraBold",
+    color: COLORS.white,
+    textAlign: "center",
   },
   button: {
-    width: 283,
-    height: 42,
-    backgroundColor: "rgba(86,159,73,1)",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 26,
-    alignSelf: "center",
-  },
-  aplicar: {
-    fontFamily: "GothamRoundedBook_21018",
-    color: "rgba(255,255,255,1)",
-    marginTop: 13,
-    marginLeft: 119,
+    width: 101,
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLORS.white,
+    borderRadius: 12,
+    margin: 6,
   },
 });

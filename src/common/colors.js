@@ -1,6 +1,15 @@
 export const mainColor = "rgb(3,134,249)";
 export const textColor = "#82888f";
 export const COLORS = {
+  azul: "#418fde",
+  azulTransparent: "rgba(65,143,222,0.1)",
+  white: "rgb(255,255,255)",
+  turquesa: "#04b4a1",
+  turquesaTransparent: "rgba(4,180,161,0.15)",
+  gris: "#8f8f8f",
+  grisoscuro: "#616161",
+  fondo: "#f5f6fa",
+  placeholder: "rgb(95,95,95)",
   kelleyGreen: "#00983c",
   gunmetal: "#515456",
   scarlet: "#d0021b",

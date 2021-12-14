@@ -17,17 +17,39 @@ import GiftsHistorical from "../../screens/giftsHistorical";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const TabButton = ({ label, icon, onPress, accessibilityState }) => {
+const TabButton = ({
+  label,
+  icon,
+  iconDisable,
+  onPress,
+  accessibilityState,
+}) => {
   let focused = accessibilityState.selected;
   return (
-    <View style={{ height: 55, width: "33.33%" }}>
+    <View style={{ height: 57, width: "33.33%" }}>
       <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Image style={styles.icon} source={icon} />
+        {focused ? (
+          <Image
+            style={{
+              ...styles.icon,
+              tintColor: COLORS.turquesa,
+            }}
+            source={icon}
+          />
+        ) : (
+          <Image
+            style={{
+              ...styles.icon,
+              tintColor: COLORS.gris,
+            }}
+            source={iconDisable ? iconDisable : icon}
+          />
+        )}
         {label && (
           <Text
             style={[
               styles.label,
-              { color: focused ? "rgba(29, 158, 112, 1)" : COLORS.gunmetal },
+              { color: focused ? COLORS.turquesa : COLORS.gris },
             ]}
           >
             {label}
@@ -66,19 +88,11 @@ const TabNavigation = ({ navigation }) => {
         component={Home}
         options={{
           tabBarShowLabel: false,
-          tabBarIcon: ({ color, focused }) => {
-            return (
-              <Image
-                style={styles.icon}
-                source={require("../../assets/image/no-image.png")}
-              />
-            );
-          },
           tabBarButton: (props) => (
             <TabButton
-              label="Catalogo"
+              label="Catálogo"
               {...props}
-              icon={require("../../assets/image/no-image.png")}
+              icon={require("../../assets/iconos/tabBarEnlaceIcono.png")}
             />
           ),
         }}
@@ -88,18 +102,11 @@ const TabNavigation = ({ navigation }) => {
         component={StackGifts}
         options={{
           tabBarShowLabel: false,
-          tabBarIcon: ({ color, focused }) => {
-            return (
-              <Image
-                style={styles.icon}
-                source={require("../../assets/image/no-image.png")}
-              />
-            );
-          },
           tabBarButton: (props) => (
             <TabButton
               {...props}
-              icon={require("../../assets/image/no-image.png")}
+              icon={require("../../assets/iconos/tabBarEnlaceIconoCopy.png")}
+              iconDisable={require("../../assets/iconos/trackin1Copy4.png")}
             />
           ),
         }}
@@ -109,19 +116,11 @@ const TabNavigation = ({ navigation }) => {
         component={ContactList}
         options={{
           tabBarShowLabel: false,
-          tabBarIcon: ({ color, focused }) => {
-            return (
-              <Image
-                style={styles.icon}
-                source={require("../../assets/image/no-image.png")}
-              />
-            );
-          },
           tabBarButton: (props) => (
             <TabButton
               label="Contactos"
               {...props}
-              icon={require("../../assets/image/no-image.png")}
+              icon={require("../../assets/iconos/tabBarEnlaceIcono3.png")}
             />
           ),
         }}
@@ -133,8 +132,8 @@ export default TabNavigation;
 
 const styles = StyleSheet.create({
   icon: {
-    width: 30,
-    height: 30,
+    width: 19,
+    height: 19,
     resizeMode: "contain",
   },
   button: {
@@ -143,16 +142,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   bar: {
-    height: 55,
+    height: 57,
     position: "absolute",
-    bottom: 40,
-    right: 16,
-    left: 16,
+    bottom: 26,
+    right: 22,
+    left: 22,
     paddingHorizontal: 10,
     borderRadius: 30,
     shadowColor: "black",
-    shadowOpacity: 0.4,
-    shadowRadius: 10,
+    shadowOpacity: 0.15,
+    shadowRadius: 20,
     shadowOffset: {
       width: 0,
       height: 5,

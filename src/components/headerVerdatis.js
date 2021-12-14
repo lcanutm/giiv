@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 18,
     color: COLORS.logoColor,
-    fontFamily: "GothamRoundedMedium_21022",
+    fontFamily: "Rounded1cExtraBold",
     letterSpacing: 0.45,
     marginTop: 15,
   },

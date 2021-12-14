@@ -4,16 +4,14 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  Image,
   Text,
   TouchableOpacity,
 } from "react-native";
 import { COLORS } from "../../common/colors";
 import { dimensions } from "../../common/styles";
 import ButtonAuth from "../../components/buttonAuth";
-import ButtonAuthSocial from "../../components/buttonAuthSocial";
 import InputAuth from "../../components/inputAuth";
-import { LOGIN_SCREEN, REGISTER_SCREEN } from "../../constant/screenNames";
+import { REGISTER_SCREEN } from "../../constant/screenNames";
 import HeaderIntro from "../intro/components/headerIntro";
 
 const ForgotPass = ({ navigation }) => {
@@ -31,50 +29,21 @@ const ForgotPass = ({ navigation }) => {
         >
           <HeaderIntro />
           <View style={styles.body}>
-            <Text
-              style={{
-                fontSize: 32,
-                fontFamily: "GothamRoundedMedium_21022",
-                color: "white",
-                textAlign: "center",
-              }}
-            >
-              Recuperar clave
-            </Text>
+            <Text style={styles.textTitle}>Recuperar clave</Text>
             <View style={styles.contentInputs}>
               <InputAuth placeholder="Email" />
             </View>
             <ButtonAuth title="Recibir clave" />
           </View>
           <TouchableOpacity
-            style={{
-              height: 40,
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: 20,
-            }}
+            style={styles.linkRegister}
             onPress={() => {
               navigation.navigate(REGISTER_SCREEN);
             }}
           >
-            <Text
-              style={{
-                fontSize: 16,
-                fontFamily: "GothamRoundedBook_21018",
-                color: "white",
-              }}
-            >
-              ¿No tienes cuenta?
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontFamily: "GothamRoundedBold_21016",
-                  color: "white",
-                  textDecorationLine: "underline",
-                }}
-              >
-                {" Regístrate"}
-              </Text>
+            <Text style={styles.textRegister1}>
+              {"¿No tienes cuenta? "}
+              <Text style={styles.textRegister2}>Regístrate</Text>
             </Text>
           </TouchableOpacity>
         </LinearGradient>
@@ -94,11 +63,12 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     justifyContent: "center",
-    // alignItems: "center",
-    paddingHorizontal: 30,
+    paddingTop: 48,
+    paddingHorizontal: 47,
   },
   contentInputs: {
-    marginTop: 20,
+    marginTop: 34,
+    marginBottom: 8,
   },
   separedor: {
     height: 40,
@@ -107,5 +77,41 @@ const styles = StyleSheet.create({
   },
   contentButtonSocial: {
     justifyContent: "center",
+  },
+  textTitle: {
+    fontSize: 32,
+    fontFamily: "Rounded1cMedium",
+    color: "white",
+    textAlign: "center",
+    letterSpacing: 0,
+  },
+  forgotPass: {
+    height: 28,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 16,
+  },
+  textForgotPass: {
+    fontSize: 14,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.white,
+    letterSpacing: 0,
+  },
+  linkRegister: {
+    height: 28,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 43,
+  },
+  textRegister1: {
+    fontSize: 18,
+    fontFamily: "Rounded1cRegular",
+    color: COLORS.white,
+  },
+  textRegister2: {
+    fontSize: 18,
+    fontFamily: "Rounded1cExtraBold",
+    color: COLORS.white,
+    textDecorationLine: "underline",
   },
 });

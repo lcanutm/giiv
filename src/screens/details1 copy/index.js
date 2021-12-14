@@ -83,14 +83,14 @@ const styles = StyleSheet.create({
   },
   textHeader: {
     fontSize: 22,
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: COLORS.tealBlue,
     textAlign: "center",
     marginLeft: 5,
   },
   textBody1: {
     fontSize: 24,
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: COLORS.tealBlue,
     textAlign: "center",
     paddingTop: 15,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   textBody2: {
     fontSize: 17,
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: COLORS.gunmetal,
     textAlign: "center",
     marginHorizontal: 15,
@@ -146,14 +146,14 @@ const styles = StyleSheet.create({
   },
   rect5: { alignItems: "center", paddingTop: 25 },
   pasteleriaMaria2: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     height: 20,
     fontSize: 16,
     textAlign: "center",
   },
   loremIpsum: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     fontSize: 14,
     marginTop: 14,
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   loremIpsum2: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(29,158,112,1)",
     marginTop: 3,
   },
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   text: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(255,255,255,1)",
     marginTop: 2,
     marginLeft: 10,
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,1)",
   },
   patrocinado: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(43,135,204,1)",
     height: 17,
     width: 111,
@@ -249,14 +249,14 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
   },
   pasteleriaMaria: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     fontSize: 22,
     marginTop: 41,
     marginLeft: 71,
   },
   loremIpsum: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     fontSize: 16,
     marginTop: 37,
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   vistaPrevias: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     marginTop: 17,
     marginLeft: 14,

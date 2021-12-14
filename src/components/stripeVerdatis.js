@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontFamily: "GothamRoundedMedium_21022",
+    fontFamily: "Rounded1cExtraBold",
     letterSpacing: 0.5,
   },
   contentButton: {
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   textButton: {
     fontSize: 14,
     color: COLORS.logoColor,
-    fontFamily: "GothamRoundedMedium_21022",
+    fontFamily: "Rounded1cExtraBold",
     letterSpacing: 0.35,
   },
   contentIcon: {

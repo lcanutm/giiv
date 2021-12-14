@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   textHeader: {
     fontSize: 22,
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: COLORS.tealBlue,
     textAlign: "center",
     paddingTop: 15,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   rect5: { position: "absolute" },
   pasteleriaMaria2: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     height: 20,
     width: 135,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     marginLeft: 30,
   },
   loremIpsum: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     fontSize: 14,
     marginTop: 14,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   loremIpsum2: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(29,158,112,1)",
     marginTop: 3,
   },
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     marginLeft: 99,
   },
   text: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(255,255,255,1)",
     marginTop: 2,
     marginLeft: 10,
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,1)",
   },
   patrocinado: {
-    fontFamily: "GothamRoundedBook_21018",
+    fontFamily: "Rounded1cExtraBold",
     color: "rgba(43,135,204,1)",
     height: 17,
     width: 111,

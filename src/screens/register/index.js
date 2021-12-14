@@ -25,21 +25,12 @@ const Register = ({ navigation }) => {
         // imageStyle={{ opacity: 0.8 }}
       >
         <LinearGradient
-          colors={[COLORS.splashBG1, "rgba(110,223,145,.6)"]}
+          colors={[COLORS.azulTransparent, "rgba(110,223,145,.6)"]}
           style={styles.content}
         >
           <HeaderIntro />
           <View style={styles.body}>
-            <Text
-              style={{
-                fontSize: 32,
-                fontFamily: "GothamRoundedMedium_21022",
-                color: "white",
-                textAlign: "center",
-              }}
-            >
-              Regístrate
-            </Text>
+            <Text style={styles.textTitle}>Regístrate</Text>
             <View style={styles.contentInputs}>
               <InputAuth placeholder="Nombre" />
               <InputAuth placeholder="Apellidos" />
@@ -49,33 +40,14 @@ const Register = ({ navigation }) => {
               <InputAuth placeholder="Teléfono móvil" />
             </View>
             <TouchableOpacity
-              style={{
-                height: 60,
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 10,
-              }}
+              style={styles.aceptar}
               // onPress={() => {
               //   props.navigation.replace("Home");
               // }}
             >
-              <View
-                style={{
-                  flexDirection: "row",
-                }}
-              >
-                <MaterialCommunityIcons
-                  style={{ fontSize: 20, color: "white" }}
-                  name="checkbox-blank-outline"
-                />
-                <Text
-                  style={{
-                    fontSize: 16,
-                    fontFamily: "GothamRoundedBook_21018",
-                    color: "white",
-                    lineHeight: 20,
-                  }}
-                >
+              <View style={styles.contentCheck}>
+                <View style={styles.check} />
+                <Text style={styles.textAceptar}>
                   Acepto la{" "}
                   <Text style={{ textDecorationLine: "underline" }}>
                     política de privacidad
@@ -90,34 +62,14 @@ const Register = ({ navigation }) => {
             <ButtonAuth title="Registrarme" />
           </View>
           <TouchableOpacity
-            style={{
-              height: 40,
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: 20,
-            }}
+            style={styles.linkLogin}
             onPress={() => {
               navigation.replace(LOGIN_SCREEN);
             }}
           >
-            <Text
-              style={{
-                fontSize: 16,
-                fontFamily: "GothamRoundedBook_21018",
-                color: "white",
-              }}
-            >
-              ¿Tienes cuenta?
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontFamily: "GothamRoundedBold_21016",
-                  color: "white",
-                  textDecorationLine: "underline",
-                }}
-              >
-                {" Accede"}
-              </Text>
+            <Text style={styles.textLogin1}>
+              {"¿Tienes cuenta? "}
+              <Text style={styles.textLogin2}>Accede</Text>
             </Text>
           </TouchableOpacity>
         </LinearGradient>
@@ -137,11 +89,11 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     justifyContent: "center",
-    // alignItems: "center",
-    paddingHorizontal: 30,
+    paddingTop: 48,
+    paddingHorizontal: 47,
   },
   contentInputs: {
-    marginTop: 20,
+    marginTop: 34,
   },
   separedor: {
     height: 40,
@@ -150,5 +102,53 @@ const styles = StyleSheet.create({
   },
   contentButtonSocial: {
     justifyContent: "center",
+  },
+  textTitle: {
+    fontSize: 32,
+    fontFamily: "Rounded1cMedium",
+    color: "white",
+    textAlign: "center",
+    letterSpacing: 0,
+  },
+  aceptar: {
+    height: 48,
+    flexDirection: "row",
+    marginTop: 6,
+    marginBottom: 10,
+  },
+  textAceptar: {
+    fontSize: 14,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.white,
+    letterSpacing: 0,
+  },
+  linkLogin: {
+    height: 28,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 43,
+  },
+  textLogin1: {
+    fontSize: 18,
+    fontFamily: "Rounded1cRegular",
+    color: COLORS.white,
+  },
+  textLogin2: {
+    fontSize: 18,
+    fontFamily: "Rounded1cExtraBold",
+    color: COLORS.white,
+    textDecorationLine: "underline",
+  },
+  contentCheck: {
+    flexDirection: "row",
+  },
+  check: {
+    borderColor: COLORS.white,
+    borderWidth: 1,
+    height: 14,
+    width: 14,
+    borderRadius: 4,
+    marginTop: 3,
+    marginRight: 5,
   },
 });

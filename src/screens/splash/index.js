@@ -13,9 +13,9 @@ const Splash = ({ setLoading }) => {
     const getFonts = async () => {
       try {
         await Font.loadAsync({
-          GothamRoundedBold_21016: require("../../assets/fonts/gotham-rounded/GothamRoundedBold_21016.ttf"),
-          GothamRoundedBook_21018: require("../../assets/fonts/gotham-rounded/GothamRoundedBook_21018.ttf"),
-          GothamRoundedMedium_21022: require("../../assets/fonts/gotham-rounded/GothamRoundedMedium_21022.ttf"),
+          Rounded1cExtraBold: require("../../assets/fonts/rounded_1c/Rounded1c-ExtraBold.ttf"),
+          Rounded1cMedium: require("../../assets/fonts/rounded_1c/Rounded1c-Medium.ttf"),
+          Rounded1cRegular: require("../../assets/fonts/rounded_1c/Rounded1c-Regular.ttf"),
         });
         setLoading && setLoading(false);
       } catch (error) {

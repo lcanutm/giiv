@@ -13,7 +13,26 @@ import { COLORS, mainColor, textColor } from "../../common/colors";
 import { INTRO_SCREEN, LOGIN_SCREEN } from "../../constant/screenNames";
 import BodyIntro from "./components/bodyIntro";
 import HeaderIntro from "./components/headerIntro";
+import { LinearGradient } from "expo-linear-gradient";
 const { width } = dimensions;
+
+const sliderContents = [
+  {
+    icono: "",
+    description:
+      "Manda un regalo a la persona que quieras sorprender con sólo su número de teléfono",
+  },
+  {
+    icono: "",
+    description:
+      "Recibirá un mensaje con una experiencia de empaquetado virtual con tu mensaje",
+  },
+  {
+    icono: "",
+    description:
+      "Paga sólo cuando acepte tu regalo y confirme dirección de entrega",
+  },
+];
 
 const Intro = (props) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -34,7 +53,15 @@ const Intro = (props) => {
   };
 
   return (
-    <>
+    <LinearGradient
+      style={{ backgroundColor: "white", flex: 1 }}
+      colors={[
+        COLORS.azulTransparent,
+        COLORS.white,
+        COLORS.white,
+        COLORS.turquesaTransparent,
+      ]}
+    >
       <HeaderIntro />
       <ScrollView
         style={{ flex: 1 }}
@@ -43,58 +70,29 @@ const Intro = (props) => {
         pagingEnabled={true}
         showsHorizontalScrollIndicator={false}
         onScroll={(event) => {
-          // console.log(event);
           setSliderPage(event);
         }}
       >
-        <BodyIntro
-          key={1}
-          iconComponent={
-            <Image
-              style={{
-                width: 119,
-                height: 119,
-                resizeMode: "contain",
-                // tintColor: COLORS.tealBlue,
-              }}
-              source={require("../../assets/image/no-image.png")}
+        {sliderContents.map((value, index) => {
+          return (
+            <BodyIntro
+              key={index}
+              iconComponent={
+                <Image
+                  style={{
+                    width: 119,
+                    height: 119,
+                    resizeMode: "contain",
+                    // tintColor: COLORS.tealBlue,
+                  }}
+                  source={require("../../assets/image/no-image.png")}
+                />
+              }
+              // title="Agrega a tus contactos"
+              description={value.description}
             />
-          }
-          // title="Agrega a tus contactos"
-          description="Aqui va la descripcion de giiv...."
-        />
-        <BodyIntro
-          key={2}
-          iconComponent={
-            <Image
-              style={{
-                width: 119,
-                height: 119,
-                resizeMode: "contain",
-                // tintColor: COLORS.tealBlue,
-              }}
-              source={require("../../assets/image/no-image.png")}
-            />
-          }
-          // title="Recibe y envia Verdatis"
-          description="Aqui va la descripcion de giiv...."
-        />
-        <BodyIntro
-          key={3}
-          iconComponent={
-            <Image
-              style={{
-                width: 119,
-                height: 119,
-                resizeMode: "contain",
-                // tintColor: COLORS.tealBlue,
-              }}
-              source={require("../../assets/image/no-image.png")}
-            />
-          }
-          // title="Anónimo y gratis"
-          description="Aqui va la descripcion de giiv...."
-        />
+          );
+        })}
       </ScrollView>
       <View style={styles.paginationWrapper}>
         <View style={styles.paginationDots}>
@@ -110,34 +108,17 @@ const Intro = (props) => {
             ))
           ) : (
             <TouchableOpacity
-              style={{
-                backgroundColor: "green",
-                width: "90%",
-                height: 40,
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 20,
-              }}
+              style={styles.button}
               onPress={() => {
                 props.navigation.replace(LOGIN_SCREEN);
               }}
             >
-              <Text
-                style={{
-                  fontSize: 16,
-                  lineHeight: 20,
-                  fontFamily: "GothamRoundedBook_21018",
-                  color: "white",
-                  textAlign: "center",
-                }}
-              >
-                Empezar
-              </Text>
+              <Text style={styles.textButton}>Empezar</Text>
             </TouchableOpacity>
           )}
         </View>
       </View>
-    </>
+    </LinearGradient>
   );
 };
 
@@ -163,22 +144,22 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   commonStyleDots: {
-    marginLeft: 9,
-    height: 12,
-    width: 12,
+    marginLeft: 7,
+    height: 11,
+    width: 11,
     borderRadius: 6,
     borderWidth: 1,
   },
   disableDots: {
-    borderColor: "green",
+    borderColor: COLORS.turquesa,
   },
   enableDots: {
-    borderColor: "green",
-    backgroundColor: "green",
+    borderColor: COLORS.turquesa,
+    backgroundColor: COLORS.turquesa,
   },
   paginationWrapper: {
     position: "absolute",
-    bottom: 30,
+    bottom: 34,
     left: 0,
     right: 0,
     flexDirection: "row",
@@ -187,5 +168,22 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     flexDirection: "row",
+    height: 45,
+    alignItems: "center",
+  },
+  button: {
+    backgroundColor: COLORS.turquesa,
+    width: "90%",
+    height: 44,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 22,
+  },
+  textButton: {
+    fontSize: 16,
+    letterSpacing: 1,
+    fontFamily: "Rounded1cExtraBold",
+    color: COLORS.white,
+    textAlign: "center",
   },
 });

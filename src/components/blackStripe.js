@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 12,
     color: COLORS.logoColor,
-    fontFamily: "GothamRoundedMedium_21022",
+    fontFamily: "Rounded1cExtraBold",
     letterSpacing: 0.3,
     marginVertical: 2,
   },
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     color: COLORS.logoColor,
-    fontFamily: "GothamRoundedMedium_21022",
+    fontFamily: "Rounded1cExtraBold",
     letterSpacing: 0.4,
   },
 });

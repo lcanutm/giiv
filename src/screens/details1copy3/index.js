@@ -152,12 +152,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginRight: 40,
   },
-  content: {
-    height: "100%",
-    width: "100%",
-    paddingHorizontal: 12,
-  },
-
   image: {
     alignSelf: "center",
     width: "100%",
@@ -191,44 +185,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 8,
     lineHeight: 22,
-  },
-  button: {
-    flex: 1,
-    height: 22,
-    flexDirection: "row",
-  },
-  loremIpsum2: {
-    fontFamily: "Rounded1cExtraBold",
-    color: COLORS.turquesa,
-    fontSize: 14,
-  },
-  icon2: {
-    color: COLORS.turquesa,
-    marginLeft: 10,
-  },
-  loremIpsum2Row: {
-    height: 30,
-    flexDirection: "row",
-    flex: 1,
-    alignItems: "center",
-  },
-  rect7: {
-    paddingHorizontal: 16,
-    height: 34,
-    borderRadius: 22,
-    backgroundColor: COLORS.turquesa,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontFamily: "Rounded1cExtraBold",
-    color: COLORS.white,
-    fontSize: 17,
-  },
-  buttonRow: {
-    height: 22,
-    flexDirection: "row",
-    marginTop: 33,
-    marginRight: 28,
   },
 });

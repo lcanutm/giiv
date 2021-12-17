@@ -20,7 +20,7 @@ import Login from "./src/screens/login";
 import Register from "./src/screens/register";
 import ForgotPass from "./src/screens/forgotPass";
 import TabNavigation from "./src/routes/main";
-import ProductDetail1 from "./src/screens/details1";
+import GiftsHistorical1 from "./src/screens/details1";
 import Checkout from "./src/screens/checkout";
 import ProductDetail3 from "./src/screens/details1copy2";
 import SendCard from "./src/screens/sendCard";
@@ -52,7 +52,7 @@ const HomeStack = () => {
         <StackHome.Screen name={MAIN_SCREEN} component={TabNavigation} />
         <StackHome.Screen
           name={PRODUCT_DETAIL1_SCREEN}
-          component={ProductDetail1}
+          component={GiftsHistorical1}
         />
         <StackHome.Screen name={CHECKOUT_SCREEN} component={Checkout} />
         <StackHome.Screen name={SENDCARD_SCREEN} component={SendCard} />

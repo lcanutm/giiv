@@ -21,7 +21,6 @@ const ForgotPass = ({ navigation }) => {
         source={require("../../assets/image/splash.jpg")}
         style={{ height: dimensions.height }}
         resizeMode="cover"
-        // imageStyle={{ opacity: 0.8 }}
       >
         <LinearGradient
           colors={[COLORS.splashBG1, "rgba(110,223,145,.6)"]}
@@ -70,31 +69,11 @@ const styles = StyleSheet.create({
     marginTop: 34,
     marginBottom: 8,
   },
-  separedor: {
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  contentButtonSocial: {
-    justifyContent: "center",
-  },
   textTitle: {
     fontSize: 32,
     fontFamily: "Rounded1cMedium",
     color: "white",
     textAlign: "center",
-    letterSpacing: 0,
-  },
-  forgotPass: {
-    height: 28,
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  textForgotPass: {
-    fontSize: 14,
-    fontFamily: "Rounded1cMedium",
-    color: COLORS.white,
     letterSpacing: 0,
   },
   linkRegister: {

@@ -255,10 +255,6 @@ const styles = StyleSheet.create({
   },
   content: { flex: 1, paddingHorizontal: 13 },
   image: { width: 30, height: 30, marginRight: 6, borderRadius: 15 },
-  buttonLeft: {
-    width: 30,
-  },
-  imageHeader: { width: 30, height: 30, position: "absolute", right: 15 },
   contentGift: {
     width: "100%",
     height: 44,

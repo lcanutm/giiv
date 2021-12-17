@@ -148,12 +148,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 12,
   },
-  content: { height: "100%", paddingTop: 33, width: "100%" },
-  image: { width: 30, height: 30 },
-  buttonLeft: {
-    width: 30,
-  },
-  imageHeader: { width: 30, height: 30, position: "absolute", right: 15 },
   contentGift: {
     width: "100%",
     height: 44,

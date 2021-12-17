@@ -107,17 +107,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginRight: 40,
   },
-  content: {
-    height: "100%",
-    width: "100%",
-    paddingHorizontal: 12,
-  },
-  image: {
-    height: 34,
-    width: 34,
-    borderRadius: 17,
-  },
-  backBotton: {},
   body: {
     flex: 1,
     justifyContent: "center",

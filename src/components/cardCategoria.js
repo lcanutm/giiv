@@ -101,11 +101,6 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     fontSize: 13,
   },
-  text1: {
-    fontFamily: "Rounded1cExtraBold",
-    color: COLORS.white,
-    fontSize: 8,
-  },
   text1select: {
     color: COLORS.turquesa,
   },

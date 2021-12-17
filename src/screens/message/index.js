@@ -111,17 +111,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginRight: 40,
   },
-  content: {
-    height: "100%",
-    width: "100%",
-    paddingHorizontal: 12,
-  },
-  image: {
-    height: 34,
-    width: 34,
-    borderRadius: 17,
-  },
-  backBotton: {},
   body: {
     flex: 1,
     justifyContent: "center",
@@ -156,15 +145,6 @@ const styles = StyleSheet.create({
     fontFamily: "Rounded1cExtraBold",
     color: COLORS.white,
     textAlign: "center",
-  },
-  button: {
-    width: 101,
-    height: 45,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: COLORS.white,
-    borderRadius: 12,
-    margin: 6,
   },
   input: {
     paddingHorizontal: 6,

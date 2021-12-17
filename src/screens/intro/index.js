@@ -124,25 +124,6 @@ const Intro = (props) => {
 
 export default Intro;
 const styles = StyleSheet.create({
-  content: {
-    height: "90%",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 35,
-    paddingBottom: "20%",
-  },
-  text: {
-    fontSize: 20,
-    color: mainColor,
-    textAlign: "center",
-    fontWeight: "bold",
-  },
-  textDescription: {
-    marginTop: 10,
-    fontSize: 18,
-    color: textColor,
-    textAlign: "center",
-  },
   commonStyleDots: {
     marginLeft: 7,
     height: 11,

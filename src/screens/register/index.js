@@ -95,14 +95,6 @@ const styles = StyleSheet.create({
   contentInputs: {
     marginTop: 34,
   },
-  separedor: {
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  contentButtonSocial: {
-    justifyContent: "center",
-  },
   textTitle: {
     fontSize: 32,
     fontFamily: "Rounded1cMedium",

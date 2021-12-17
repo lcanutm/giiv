@@ -40,14 +40,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 33,
     paddingBottom: "20%",
   },
-  text: {
-    fontSize: 22,
-    color: COLORS.tealBlue,
-    textAlign: "center",
-    fontFamily: "Rounded1cExtraBold",
-    letterSpacing: 0,
-    marginTop: 22,
-  },
   textDescription: {
     fontSize: 22,
     lineHeight: 28,

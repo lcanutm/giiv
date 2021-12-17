@@ -88,29 +88,8 @@ const styles = StyleSheet.create({
     height: 70,
     flexDirection: "row",
   },
-  loremIpsum2: {
-    fontFamily: "Rounded1cExtraBold",
-    color: COLORS.turquesa,
-    fontSize: 14,
-  },
   loremIpsum2Row: { flex: 1, paddingLeft: 16 },
-  rect7: {
-    paddingHorizontal: 16,
-    height: 34,
-    borderRadius: 22,
-    backgroundColor: COLORS.turquesa,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontFamily: "Rounded1cExtraBold",
-    color: COLORS.white,
-    fontSize: 17,
-  },
-  buttonRow: {
-    flexDirection: "row",
-    height: 70,
-  },
+
   image: {
     alignSelf: "center",
     width: "100%",
@@ -136,7 +115,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(235,235,235)",
     marginTop: 7,
   },
-
   thumbnail: {
     height: 24,
     width: 24,

@@ -17,7 +17,7 @@ import CardTheme from "./components/cardTheme";
 import ContactListModal from "../contactsListcopy";
 import PriceRange from "../priceRange";
 import CardProduct from "../../components/cardProduct";
-import DatailsProducts3 from "../details1 copy 3";
+import DatailsProducts3 from "../details1copy3";
 const thematic = [
   {
     color: "rgb(217,181,203)",
@@ -198,23 +198,13 @@ const Home = ({ navigation }) => {
             );
           }}
         />
-
-        {/* {products.map((item) => {
-          return (
-            <CardProduct
-              name={item.name}
-              description={item.description}
-              image={item.image}
-              precio={item.precio}
-            />
-          );
-        })} */}
       </View>
 
       {visibleContacts && <ContactListModal visible={setVisibleContacts} />}
       {visiblePrice && <PriceRange visible={setVisiblePrice} />}
       {visibleDetailsProducts && (
         <DatailsProducts3
+          navigation={navigation}
           name={currentProduct.name}
           description={currentProduct.description}
           image={currentProduct.image}

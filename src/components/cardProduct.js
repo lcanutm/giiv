@@ -55,44 +55,6 @@ function CardProduct({ name, image, description, precio, onPress }) {
 
 export default CardProduct;
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-  header: {
-    height: 268,
-  },
-  textHeader: {
-    fontSize: 16,
-    fontFamily: "Rounded1cRegular",
-    color: COLORS.azul,
-    textAlign: "center",
-    height: 28,
-    marginTop: 16,
-    marginBottom: 4,
-  },
-  content: { height: "100%", paddingTop: 55 },
-  body: {
-    paddingTop: 10,
-    backgroundColor: "white",
-    marginTop: -16,
-    borderTopLeftRadius: 28.5,
-    borderTopRightRadius: 28.5,
-    shadowColor: COLORS.tealBlue,
-    shadowOpacity: 0.15,
-    shadowRadius: 15,
-    shadowOffset: {
-      width: 0,
-      height: -8,
-    },
-  },
-  ellipse: {
-    top: 0,
-    left: 89,
-    width: 202,
-    height: 203,
-    position: "absolute",
-  },
   rect5: {
     top: 0,
     left: 0,
@@ -122,10 +84,6 @@ const styles = StyleSheet.create({
     fontFamily: "Rounded1cExtraBold",
     color: COLORS.turquesa,
     fontSize: 14,
-  },
-  icon2: {
-    color: COLORS.turquesa,
-    marginLeft: 10,
   },
   loremIpsum2Row: {
     height: 30,
@@ -191,17 +149,5 @@ const styles = StyleSheet.create({
     width: 111,
     textAlign: "center",
     marginTop: 8,
-  },
-  ellipseStack: {
-    flex: 1,
-  },
-  contentInput: {
-    marginHorizontal: 12,
-  },
-  etiquetas: {
-    marginLeft: 12,
-    alignItems: "center",
-    height: 100,
-    marginBottom: -8,
   },
 });

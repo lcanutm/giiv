@@ -16,6 +16,7 @@ const Splash = ({ setLoading }) => {
           Rounded1cExtraBold: require("../../assets/fonts/rounded_1c/Rounded1c-ExtraBold.ttf"),
           Rounded1cMedium: require("../../assets/fonts/rounded_1c/Rounded1c-Medium.ttf"),
           Rounded1cRegular: require("../../assets/fonts/rounded_1c/Rounded1c-Regular.ttf"),
+          Rounded1cBlack: require("../../assets/fonts/rounded_1c/Rounded1c-Black.ttf"),
         });
         setLoading && setLoading(false);
       } catch (error) {

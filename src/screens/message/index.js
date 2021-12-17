@@ -1,11 +1,12 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, View, Text, Modal, Image } from "react-native";
+import { StyleSheet, View, Text, Modal, Image, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { COLORS } from "../../common/colors";
 import InputSearch from "../../components/inputSearch";
+import { SENDCARD_SCREEN } from "../../constant/screenNames";
 
-const PriceRange = ({ navigation, visible }) => {
+const Message = ({ navigation, visible }) => {
   return (
     <Modal visible transparent>
       <View style={styles.container}>
@@ -43,46 +44,49 @@ const PriceRange = ({ navigation, visible }) => {
                   />
                 </View>
               </TouchableOpacity>
-
-              {/* <Image
-                  source={require("../../assets/image/no-image.png")}
-                  resizeMode="contain"
-                  style={styles.image}
-                /> */}
-              <Text style={styles.textHeader}>Tu pones el precio</Text>
+              <Text style={styles.textHeader}>Tu mensaje</Text>
             </View>
           </View>
         </View>
         <View style={styles.body}>
-          <Text style={styles.text}>Indica el rango que te interesa:</Text>
-          <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity style={styles.button}>
-              <Text
-                style={{
-                  fontFamily: "Rounded1cMedium",
-                  fontSize: 14,
-                  color: COLORS.gris,
+          <Text style={styles.text}>¿Quieres añadir un mensaje?</Text>
+          <View
+            style={{
+              height: 150,
+              width: "100%",
+              paddingHorizontal: 30,
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                borderRadius: 12,
+                paddingHorizontal: 30,
+                backgroundColor: COLORS.white,
+                marginTop: 6,
+              }}
+            >
+              <TextInput
+                placeholder="Mensaje de agradecimiento..."
+                onChangeText={(text) => {
+                  // onChangeText && onChangeText(text);
                 }}
-              >
-                Desde
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text
-                style={{
-                  fontFamily: "Rounded1cMedium",
-                  fontSize: 14,
-                  color: COLORS.gris,
-                }}
-              >
-                Hasta
-              </Text>
-            </TouchableOpacity>
+                placeholderTextColor={COLORS.placeholder}
+                style={styles.input}
+                multiline
+              />
+            </View>
           </View>
         </View>
         <View style={styles.contentGift}>
-          <TouchableOpacity style={styles.gift}>
-            <Text style={styles.textButton}>Aplicar</Text>
+          <TouchableOpacity
+            style={styles.gift}
+            onPress={() => {
+              visible(false);
+              navigation.navigate(SENDCARD_SCREEN);
+            }}
+          >
+            <Text style={styles.textButton}>Continuar</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -90,7 +94,7 @@ const PriceRange = ({ navigation, visible }) => {
   );
 };
 
-export default PriceRange;
+export default Message;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -161,5 +165,13 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     borderRadius: 12,
     margin: 6,
+  },
+  input: {
+    paddingHorizontal: 6,
+    textAlign: "center",
+    fontSize: 14,
+    letterSpacing: 0,
+    color: COLORS.placeholder,
+    fontFamily: "Rounded1cMedium",
   },
 });

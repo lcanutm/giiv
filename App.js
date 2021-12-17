@@ -10,6 +10,9 @@ import {
   FORGOT_PASS_SCREEN,
   MAIN_SCREEN,
   PRODUCT_DETAIL1_SCREEN,
+  CHECKOUT_SCREEN,
+  PRODUCT_DETAIL3_SCREEN,
+  SENDCARD_SCREEN,
 } from "./src/constant/screenNames";
 import Splash from "./src/screens/splash";
 import Intro from "./src/screens/intro";
@@ -18,6 +21,9 @@ import Register from "./src/screens/register";
 import ForgotPass from "./src/screens/forgotPass";
 import TabNavigation from "./src/routes/main";
 import ProductDetail1 from "./src/screens/details1";
+import Checkout from "./src/screens/checkout";
+import ProductDetail3 from "./src/screens/details1copy2";
+import SendCard from "./src/screens/sendCard";
 
 const Stack = createNativeStackNavigator();
 const StackInit = createNativeStackNavigator();
@@ -42,11 +48,21 @@ const HomeStack = () => {
       initialRouteName={MAIN_SCREEN}
       screenOptions={{ headerShown: false }}
     >
-      <StackHome.Screen name={MAIN_SCREEN} component={TabNavigation} />
-      <StackHome.Screen
-        name={PRODUCT_DETAIL1_SCREEN}
-        component={ProductDetail1}
-      />
+      <StackHome.Group>
+        <StackHome.Screen name={MAIN_SCREEN} component={TabNavigation} />
+        <StackHome.Screen
+          name={PRODUCT_DETAIL1_SCREEN}
+          component={ProductDetail1}
+        />
+        <StackHome.Screen name={CHECKOUT_SCREEN} component={Checkout} />
+        <StackHome.Screen name={SENDCARD_SCREEN} component={SendCard} />
+      </StackHome.Group>
+      <StackHome.Group screenOptions={{ presentation: "modal" }}>
+        <StackHome.Screen
+          name={PRODUCT_DETAIL3_SCREEN}
+          component={ProductDetail3}
+        />
+      </StackHome.Group>
     </StackHome.Navigator>
   );
 };

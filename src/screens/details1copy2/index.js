@@ -51,7 +51,6 @@ const ProductDetail3 = ({ navigation }) => {
           </View>
         </LinearGradient>
       </View>
-
       <View style={styles.body}>
         <View style={styles.container}>
           <View style={styles.rect6Stack}>

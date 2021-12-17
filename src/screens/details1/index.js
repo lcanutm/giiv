@@ -1,43 +1,62 @@
-import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { COLORS } from "../../common/colors";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   GIFTS_HISTORICAL_SCREEN,
   MAIN_SCREEN,
+  PRODUCT_DETAIL1_SCREEN,
 } from "../../constant/screenNames";
+import CardGift from "../../components/cardGift";
 
-const ProductDetail1 = ({ navigation }) => {
+const GiftsHistorical = ({ navigation }) => {
   return (
-    <View style={styles.container1}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <LinearGradient
-          colors={[COLORS.splashBG1, "white", "white"]}
-          style={styles.content}
+          colors={["rgba(65,143,222,0.2)", COLORS.white]}
+          style={{
+            flex: 1,
+            paddingTop: 45,
+          }}
         >
-          <View style={styles.contentHeader}>
+          <View
+            style={{
+              flexDirection: "row",
+              height: 44,
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate(MAIN_SCREEN, {
                   screen: GIFTS_HISTORICAL_SCREEN,
                 });
               }}
-              style={styles.buttonLeft}
+              style={{
+                width: 30,
+                height: "100%",
+                alignItems: "flex-start",
+                justifyContent: "center",
+              }}
             >
-              <MaterialCommunityIcons
-                name="chevron-left"
-                size={30}
-                color={COLORS.tealBlue}
-              />
+              <View style={{ alignItems: "center" }}>
+                <MaterialCommunityIcons
+                  color={COLORS.azul}
+                  size={30}
+                  name="chevron-left"
+                />
+              </View>
             </TouchableOpacity>
             <View
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
                 flex: 1,
+                flexDirection: "row",
+                marginRight: 40,
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <Image
@@ -45,25 +64,28 @@ const ProductDetail1 = ({ navigation }) => {
                 resizeMode="contain"
                 style={styles.image}
               />
-              <Text style={styles.textHeader}>Alvaro Garcia</Text>
+              <Text style={styles.textHeader}>Álvaro García</Text>
             </View>
-            <View style={{ width: 30 }}></View>
+          </View>
+          <View style={styles.containerHeaderMsg}>
+            <View style={styles.contentHeaderMsg}>
+              <Text style={styles.textHeaderMsg}>Gracias mi amor, tq!</Text>
+            </View>
           </View>
         </LinearGradient>
       </View>
-
       <View style={styles.body}>
-        <View style={styles.container}>
-          <View style={styles.rect6Stack}>
-            <View style={styles.rect6}>
-              <Text style={styles.pasteleriaMaria}>Pasteleria maria</Text>
-              <Text style={styles.loremIpsum}>
-                Especialidad de chocolate blanco
-              </Text>
-            </View>
-            <View style={styles.rect8}></View>
-            <View style={styles.rect9}>
-              <Text style={styles.vistaPrevias}>Vista previas</Text>
+        <View style={styles.containerCard}>
+          <View style={styles.contentCard}>
+            <Text style={styles.textCard}>Pastelería Tartevere</Text>
+            <Text style={styles.textCard1}>Tarta Red velvet</Text>
+            <Text style={styles.textCard2}>Tarta (16cm)</Text>
+            <View style={styles.containerCardMsg}>
+              <View style={styles.contentCardMsg}>
+                <View style={styles.viewCardMsg}>
+                  <Text style={styles.textVCMsg}>Vista previa</Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -72,60 +94,43 @@ const ProductDetail1 = ({ navigation }) => {
   );
 };
 
-export default ProductDetail1;
+export default GiftsHistorical;
 const styles = StyleSheet.create({
-  container1: {
+  container: {
     flex: 1,
     backgroundColor: "white",
   },
   header: {
-    height: 88,
+    height: 156,
   },
   textHeader: {
     fontSize: 22,
-    fontFamily: "Rounded1cExtraBold",
-    color: COLORS.tealBlue,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.azul,
     textAlign: "center",
-    marginLeft: 5,
   },
-  textBody1: {
-    fontSize: 24,
-    fontFamily: "Rounded1cExtraBold",
-    color: COLORS.tealBlue,
+  textHeaderMsg: {
+    fontSize: 18,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.white,
     textAlign: "center",
-    paddingTop: 15,
-    paddingBottom: 5,
   },
-  textBody2: {
-    fontSize: 17,
-    fontFamily: "Rounded1cExtraBold",
-    color: COLORS.gunmetal,
-    textAlign: "center",
-    marginHorizontal: 15,
-    lineHeight: 22,
-  },
-  content: { height: "100%", paddingTop: 33 },
-  body: {
-    alignSelf: "center",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-  },
-  image: { width: 30, height: 30 },
-  imageBody: { width: 150, height: 150 },
-  contentHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    height: 55,
-    paddingHorizontal: 15,
-  },
-  buttonLeft: {
-    width: 30,
+  content: {
+    height: "100%",
+    paddingTop: 33,
+    backgroundColor: "white",
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
   },
   cardGifts: {
     height: 500,
     marginHorizontal: 25,
+    marginTop: 25,
     borderRadius: 20,
     backgroundColor: "white",
     shadowColor: "black",
@@ -136,15 +141,24 @@ const styles = StyleSheet.create({
       height: 0,
     },
   },
-  imageHeader: { width: 30, height: 30, position: "absolute", right: 15 },
+  body: { flex: 1, paddingHorizontal: 24 },
+  image: { width: 30, height: 30, marginRight: 6, borderRadius: 15 },
   imageBody: { width: "90%", marginTop: 10, alignSelf: "center" },
-  rect5: { alignItems: "center", paddingTop: 25 },
+  contentHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 55,
+  },
+  rect5: { position: "absolute" },
   pasteleriaMaria2: {
     fontFamily: "Rounded1cExtraBold",
     color: "#121212",
     height: 20,
+    width: 135,
     fontSize: 16,
-    textAlign: "center",
+    marginTop: 312,
+    marginLeft: 30,
   },
   loremIpsum: {
     fontFamily: "Rounded1cExtraBold",
@@ -173,10 +187,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flex: 1,
   },
-  cardInsideGifts: {
-    width: 150,
-    height: 200,
-    borderRadius: 20,
+  rect7: {
+    width: 47,
+    height: 22,
+    borderRadius: 13,
+    backgroundColor: "rgba(29,158,112,1)",
+    marginLeft: 99,
   },
   text: {
     fontFamily: "Rounded1cExtraBold",
@@ -219,81 +235,92 @@ const styles = StyleSheet.create({
   ellipseStack: {
     flex: 1,
   },
-  container: {
-    width: 304,
-    height: 421,
+  containerHeaderMsg: {
+    height: 47,
+    paddingHorizontal: 40,
   },
-  rect6: {
-    top: 0,
-    left: 0,
-    width: 304,
-    height: 349,
-    position: "absolute",
-    backgroundColor: "#fff",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 22,
-    shadowColor: "rgba(0,0,0,1)",
+  contentHeaderMsg: {
+    height: 47,
+    width: "100%",
+    borderRadius: 12,
+    backgroundColor: COLORS.azul,
+    justifyContent: "center",
+  },
+  containerCard: {
+    height: 313,
+  },
+  contentCard: {
+    flex: 1,
+    borderRadius: 12,
+    backgroundColor: COLORS.white,
+    paddingTop: 22,
+    shadowColor: "black",
+    shadowOpacity: 0.15,
+    shadowRadius: 20,
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 5,
     },
-    elevation: 60,
-    shadowOpacity: 0.35,
-    shadowRadius: 20,
+    alignItems: "center",
   },
-  pasteleriaMaria: {
+  containerCardMsg: {
+    height: 232,
+    width: "100%",
+    paddingHorizontal: 77,
+    zIndex: 1,
+    position: "absolute",
+    bottom: -36,
+  },
+  contentCardMsg: {
+    flex: 1,
+    borderRadius: 12,
+    backgroundColor: "rgb(217,181,203)",
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 25,
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    alignItems: "center",
+  },
+  textCard: {
     fontFamily: "Rounded1cExtraBold",
-    color: "#121212",
+    color: COLORS.grisoscuro,
     fontSize: 22,
-    marginTop: 41,
-    marginLeft: 71,
   },
-  loremIpsum: {
+  textCard1: {
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.gris,
+    fontSize: 18,
+  },
+  textCard2: {
     fontFamily: "Rounded1cExtraBold",
-    color: "#121212",
-    fontSize: 16,
-    marginTop: 37,
-    marginLeft: 33,
+    color: COLORS.azul,
+    fontSize: 22,
   },
-  rect8: {
-    top: 158,
-    left: 64,
-    width: 170,
-    height: 238,
+  textVCMsg: {
+    fontFamily: "Rounded1cExtraBold",
+    color: COLORS.azul,
+    fontSize: 12,
+    textAlign: "center",
+  },
+  viewCardMsg: {
+    height: 34,
+    width: 96,
+    justifyContent: "center",
     position: "absolute",
-    backgroundColor: "rgba(196,172,172,1)",
+    bottom: -17,
+    backgroundColor: COLORS.white,
+    borderRadius: 17,
     borderWidth: 1,
-    borderColor: "rgba(255,255,255,1)",
-    borderRadius: 24,
-    shadowColor: "rgba(0,0,0,1)",
+    borderColor: COLORS.azul,
+    shadowColor: "black",
+    shadowOpacity: 0.15,
+    shadowRadius: 20,
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 10,
     },
-    elevation: 60,
-    shadowOpacity: 0.42,
-    shadowRadius: 20,
-  },
-  rect9: {
-    top: 371,
-    left: 95,
-    width: 109,
-    height: 50,
-    position: "absolute",
-    backgroundColor: "rgba(255,255,255,1)",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 25,
-  },
-  vistaPrevias: {
-    fontFamily: "Rounded1cExtraBold",
-    color: "#121212",
-    marginTop: 17,
-    marginLeft: 14,
-  },
-  rect6Stack: {
-    width: 304,
-    height: 421,
   },
 });

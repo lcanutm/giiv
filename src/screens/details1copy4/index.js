@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Modal, ImageBackground } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { COLORS } from "../../common/colors";
 import CardCategoria from "../../components/cardCategoria";
-import DatailsProducts4 from "../details1 copy 4";
+import { CHECKOUT_SCREEN } from "../../constant/screenNames";
 
 const categorias = [
   {
@@ -27,7 +27,7 @@ const categorias = [
     precio: 18,
   },
 ];
-const DatailsProducts3 = ({
+const DatailsProducts4 = ({
   navigation,
   visible,
   name,
@@ -35,9 +35,9 @@ const DatailsProducts3 = ({
   description,
   precio,
   onPress,
+  hideModals,
 }) => {
-  const [visibleDetailsCategoria, setVisibleDetailsCategoria] = useState(false);
-  const [currentCategoria, setCurrentCategoria] = useState({});
+  const [selectProduct, setSelectProduct] = useState(null);
   return (
     <Modal visible transparent>
       <View style={styles.container}>
@@ -93,10 +93,10 @@ const DatailsProducts3 = ({
           ></ImageBackground>
           <View style={styles.rect5}>
             <Text style={styles.name}>{name}</Text>
-            <Text style={styles.description}>{description}</Text>
+            {/* <Text style={styles.description}>{description}</Text> */}
           </View>
           <FlatList
-            contentContainerStyle={{ marginHorizontal: 12, marginTop: 24 }}
+            contentContainerStyle={{ marginHorizontal: 24, marginTop: 24 }}
             data={categorias}
             keyExtractor={(item) => {
               return item.name;
@@ -104,16 +104,16 @@ const DatailsProducts3 = ({
             // ItemSeparatorComponent={() => {
             //   return <View style={{ width: 10 }}></View>;
             // }}
-            renderItem={({ item }) => {
+            renderItem={({ item, index }) => {
               return (
                 <CardCategoria
+                  select={selectProduct === index}
                   name={item.name}
                   description={item.description}
                   image={item.image}
                   precio={item.precio}
                   onPress={() => {
-                    setCurrentCategoria(item);
-                    setVisibleDetailsCategoria(true);
+                    setSelectProduct(index);
                   }}
                 />
               );
@@ -121,23 +121,31 @@ const DatailsProducts3 = ({
           />
         </View>
       </View>
-      {visibleDetailsCategoria && (
-        <DatailsProducts4
-          name={currentCategoria.name}
-          description={currentCategoria.description}
-          image={currentCategoria.image}
-          visible={setVisibleDetailsCategoria}
-        />
-      )}
+      <View style={styles.contentGift}>
+        {selectProduct !== null ? (
+          <TouchableOpacity
+            style={styles.gift}
+            onPress={() => {
+              hideModals();
+              navigation.navigate(CHECKOUT_SCREEN);
+            }}
+          >
+            <Text style={styles.textButton}>Regalar</Text>
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.disablegift}>
+            <Text style={styles.textButton}>Regalar</Text>
+          </View>
+        )}
+      </View>
     </Modal>
   );
 };
 
-export default DatailsProducts3;
+export default DatailsProducts4;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.8)",
   },
   header: {
     height: 130,
@@ -182,6 +190,7 @@ const styles = StyleSheet.create({
     color: COLORS.grisoscuro,
     fontSize: 18,
     marginTop: 18,
+    textAlign: "center",
   },
   description: {
     fontFamily: "Rounded1cMedium",
@@ -228,5 +237,35 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 33,
     marginRight: 28,
+  },
+  contentGift: {
+    width: "100%",
+    height: 44,
+    position: "absolute",
+    bottom: 34,
+    paddingHorizontal: 24,
+  },
+  gift: {
+    backgroundColor: COLORS.turquesa,
+    width: "100%",
+    height: 44,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 22,
+  },
+  disablegift: {
+    backgroundColor: COLORS.turquesaTransparent,
+    width: "100%",
+    height: 44,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 22,
+  },
+  textButton: {
+    fontSize: 16,
+    letterSpacing: 1,
+    fontFamily: "Rounded1cExtraBold",
+    color: COLORS.white,
+    textAlign: "center",
   },
 });

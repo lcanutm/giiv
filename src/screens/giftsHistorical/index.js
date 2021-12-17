@@ -2,58 +2,71 @@ import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { COLORS } from "../../common/colors";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { PRODUCT_DETAIL1_SCREEN } from "../../constant/screenNames";
+import CardGift from "../../components/cardGift";
 
 const GiftsHistorical = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.content}>
-          <View style={styles.contentHeader}>
-            <Text style={styles.textHeader}>Mis Regalos</Text>
-            <Image
-              source={require("../../assets/image/no-image.png")}
-              resizeMode="contain"
-              style={styles.imageHeader}
-            />
+        <View
+          style={{
+            flex: 1,
+            paddingTop: 45,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              height: 44,
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                marginLeft: 30,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text style={styles.textHeader}>Mis Regalos</Text>
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                // navigation.goBack();
+              }}
+              style={{
+                width: 40,
+                height: "100%",
+                alignItems: "flex-start",
+                justifyContent: "center",
+              }}
+            >
+              <View style={{ alignItems: "center" }}>
+                <MaterialCommunityIcons
+                  color={COLORS.turquesa}
+                  size={30}
+                  name="tune-vertical"
+                />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
       <View style={styles.body}>
-        <TouchableOpacity
+        <CardGift
+          name={"kjhjh"}
+          description={"ikjhkj"}
+          image={require("../../assets/image/no-image.png")}
+          precio={22}
           onPress={() => {
             navigation.navigate(PRODUCT_DETAIL1_SCREEN);
           }}
-          style={styles.cardGifts}
-        >
-          <Image
-            source={require("../../assets/image/no-image.png")}
-            resizeMode="contain"
-            style={styles.imageBody}
-            imageStyle={styles.image_imageStyle}
-          ></Image>
-          <View style={styles.rect5}>
-            <Text style={styles.pasteleriaMaria2}>Pasteleria Maria</Text>
-            <Text style={styles.loremIpsum}>
-              Deliciosas tartas de chocolate blaco, hechas a{"\n"}mano...
-            </Text>
-            <View style={styles.buttonRow}>
-              <TouchableOpacity style={styles.button}>
-                <View style={styles.loremIpsum2Row}>
-                  <Text style={styles.loremIpsum2}>Ver catalogo completo</Text>
-                  <Entypo
-                    name="chevron-thin-right"
-                    style={styles.icon2}
-                  ></Entypo>
-                </View>
-              </TouchableOpacity>
-              <View style={styles.rect7}>
-                <Text style={styles.text}>22€</Text>
-              </View>
-            </View>
-          </View>
-        </TouchableOpacity>
+        />
       </View>
     </View>
   );
@@ -66,15 +79,22 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   header: {
-    height: 88,
+    height: 90,
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    shadowColor: "rgb(0,0,0)",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    backgroundColor: COLORS.white,
+    zIndex: 99,
   },
   textHeader: {
     fontSize: 22,
-    fontFamily: "Rounded1cExtraBold",
-    color: COLORS.tealBlue,
+    fontFamily: "Rounded1cMedium",
+    color: COLORS.azul,
     textAlign: "center",
-    paddingTop: 15,
-    paddingBottom: 5,
   },
   content: {
     height: "100%",
@@ -102,7 +122,7 @@ const styles = StyleSheet.create({
       height: 0,
     },
   },
-  body: {},
+  body: { paddingTop: 22, paddingHorizontal: 22 },
   imageHeader: { width: 30, height: 30, position: "absolute", right: 15 },
   imageBody: { width: "90%", marginTop: 10, alignSelf: "center" },
   contentHeader: {

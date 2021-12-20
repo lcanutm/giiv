@@ -7,7 +7,7 @@ import InputSearch from "../../components/inputSearch";
 
 const PriceRange = ({ navigation, visible }) => {
   return (
-    <Modal visible transparent>
+    <Modal visible transparent animationType="slide">
       <View style={styles.container}>
         <View style={styles.header}>
           <View

@@ -39,7 +39,7 @@ const DatailsProducts3 = ({
   const [visibleDetailsCategoria, setVisibleDetailsCategoria] = useState(false);
   const [currentCategoria, setCurrentCategoria] = useState({});
   return (
-    <Modal visible transparent>
+    <Modal visible transparent animationType="slide">
       <View style={styles.container}>
         <View style={styles.header}>
           <View

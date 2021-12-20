@@ -18,64 +18,14 @@ import ContactListModal from "../contactsListcopy";
 import PriceRange from "../priceRange";
 import CardProduct from "../../components/cardProduct";
 import DatailsProducts3 from "../details1copy3";
-const thematic = [
-  {
-    color: "rgb(217,181,203)",
-    title: "Enhorabuena",
-    icono: require("../../assets/iconos/etiquetaIconosEnhorabuena.png"),
-  },
-  {
-    color: "rgb(254,208,213)",
-    title: "Cumpleaños",
-    icono: require("../../assets/iconos/etiquetaIconosCumple.png"),
-  },
-  {
-    color: "rgb(186,237,239)",
-    title: "Gracias",
-    icono: require("../../assets/iconos/etiquetaIconosGracias.png"),
-  },
-  {
-    color: "rgb(217,181,203)",
-    title: "Graduación",
-    icono: require("../../assets/iconos/etiquetaIconosGraduacion.png"),
-  },
-];
-const categorySearch = [
-  { title: "Nuevo" },
-  { title: "Comida" },
-  { title: "Casa" },
-  { title: "Infantil" },
-];
-
-const products = [
-  {
-    image: require("../../assets/image/no-image.png"),
-    name: "Pastelería María",
-    description:
-      "Descubre nuestras tartas artesanales frescas, con ingredientes de la mejor calidad. Tartas 0% Azúcar. Tartas Sin Lactosa. ",
-    precio: 22,
-  },
-  {
-    image: require("../../assets/image/no-image.png"),
-    name: "Pastelería Tartevere",
-    description:
-      "En Blasé no concebimos que un producto no sea de calidad, por eso trabajamos mano a mano con nuestros artesanos",
-    precio: 65,
-  },
-  {
-    image: require("../../assets/image/no-image.png"),
-    name: "Blase",
-    description:
-      "Tienda gourmet con productos delicatessen de España, cajas y cestas de regalo personalizadas, vinos de gran formato y edición limitada.",
-    precio: 18,
-  },
-];
+import { categorySearch, products, thematic } from "../../constant/data";
 
 const Home = ({ navigation }) => {
   const [visibleContacts, setVisibleContacts] = useState(false);
   const [visiblePrice, setVisiblePrice] = useState(false);
   const [visibleDetailsProducts, setVisibleDetailsProducts] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -96,7 +46,7 @@ const Home = ({ navigation }) => {
             Elige una temática para tu regalo:
           </Text>
           <FlatList
-            style={{ marginLeft: dimensions.width * 0.05 }}
+            contentContainerStyle={{ marginLeft: dimensions.width * 0.05 }}
             horizontal
             showsHorizontalScrollIndicator={false}
             data={thematic}
@@ -116,24 +66,30 @@ const Home = ({ navigation }) => {
         </LinearGradient>
       </View>
       <View style={styles.body}>
-        <View style={{ marginBottom: -24 }}>
-          <Text style={styles.textHeader}>¿Qué te gustaría regalar?</Text>
+        <Text style={styles.textHeader}>¿Qué te gustaría regalar?</Text>
+
+        <View style={styles.etiquetas}>
+          <FlatList
+            contentContainerStyle={{
+              width: "100%",
+              paddingLeft: 12,
+              marginTop: 12,
+              paddingBottom: 16,
+            }}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={categorySearch}
+            keyExtractor={(item) => {
+              return item.title;
+            }}
+            ItemSeparatorComponent={() => {
+              return <View style={{ width: 10 }}></View>;
+            }}
+            renderItem={({ item }) => {
+              return <ButtonCategory title={item.title} />;
+            }}
+          />
         </View>
-        <FlatList
-          contentContainerStyle={styles.etiquetas}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={categorySearch}
-          keyExtractor={(item) => {
-            return item.title;
-          }}
-          ItemSeparatorComponent={() => {
-            return <View style={{ width: 10 }}></View>;
-          }}
-          renderItem={({ item }) => {
-            return <ButtonCategory title={item.title} />;
-          }}
-        />
         <View
           style={{
             flexDirection: "row",
@@ -177,8 +133,8 @@ const Home = ({ navigation }) => {
         <FlatList
           contentContainerStyle={{ marginHorizontal: 12 }}
           data={products}
-          keyExtractor={(item) => {
-            return item.name;
+          keyExtractor={(_, index) => {
+            return index;
           }}
           // ItemSeparatorComponent={() => {
           //   return <View style={{ width: 10 }}></View>;
@@ -235,7 +191,6 @@ const styles = StyleSheet.create({
   },
   content: { height: "100%", paddingTop: 55 },
   body: {
-    paddingTop: 10,
     backgroundColor: COLORS.white,
     marginTop: -16,
     borderTopLeftRadius: 28.5,
@@ -252,9 +207,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
   },
   etiquetas: {
-    marginLeft: 12,
     alignItems: "center",
-    height: 100,
-    marginBottom: -8,
+    height: 62,
+    justifyContent: "center",
   },
 });

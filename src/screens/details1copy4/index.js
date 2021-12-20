@@ -39,7 +39,7 @@ const DatailsProducts4 = ({
 }) => {
   const [selectProduct, setSelectProduct] = useState(null);
   return (
-    <Modal visible transparent>
+    <Modal visible transparent animationType="slide">
       <View style={styles.container}>
         <View style={styles.header}>
           <View

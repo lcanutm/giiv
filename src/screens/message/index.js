@@ -8,7 +8,7 @@ import { SENDCARD_SCREEN } from "../../constant/screenNames";
 
 const Message = ({ navigation, visible }) => {
   return (
-    <Modal visible transparent>
+    <Modal visible transparent animationType="slide">
       <View style={styles.container}>
         <View style={styles.header}>
           <View
